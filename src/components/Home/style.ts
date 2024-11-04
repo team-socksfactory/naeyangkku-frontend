@@ -15,7 +15,8 @@ export const MainWrap = styled.div`
 
   padding: 73px 38px 68px 38px;
 
-  justify-content: space-between;
+  justify-content: space-evenly;
+  gap: 20px;
 `;
 
 export const TitleWrap = styled.div`
@@ -46,7 +47,7 @@ export const TitleWrap = styled.div`
 
 export const SocksWrap = styled.div`
   width: 100%;
-  height: 70%;
+  height: 80%;
 
   border: 1px solid #000;
 `;
