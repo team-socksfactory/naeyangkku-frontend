@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import BackgroundImage from "src/assets/images/background.png";
+import MobileBackgroundImage from "src/assets/images/mobileBackground.png";
+import DesktopBackgroundImage from "src/assets/images/desktopBackground.png";
 import { NaeYangKkuTheme } from "src/style/theme";
 
 export const MainWrap = styled.div`
@@ -9,14 +10,19 @@ export const MainWrap = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-image: url(${BackgroundImage});
+  background-image: url(${DesktopBackgroundImage});
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 
   padding: 73px 38px 68px 38px;
 
   justify-content: space-evenly;
   gap: 20px;
+
+  @media (max-width: 393px) {
+    background-image: url(${MobileBackgroundImage});
+    background-size: contain;
+  }
 `;
 
 export const TitleWrap = styled.div`
@@ -53,7 +59,7 @@ export const SocksWrap = styled.div`
 `;
 
 export const Button = styled.div`
-  width: 100%;
+  width: 30%;
   height: 8%;
 
   border: none;
@@ -69,5 +75,11 @@ export const Button = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  align-self: center;
   gap: 20px;
+
+  @media (max-width: 393px) {
+    width: 100%;
+    height: 8%;
+  }
 `;
