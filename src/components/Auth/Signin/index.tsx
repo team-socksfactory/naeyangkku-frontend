@@ -3,6 +3,7 @@ import * as S from './style';
 import LogoHat from 'src/assets/images/Group 17.svg';
 import useAuth from 'src/hooks/Auth/useAuth';
 import { useLocation } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
 const Signin = () => {
   const { signupInfo, loginInfo, handleLoginInfo, handleSignupInfo, menu, setMenu, onRegister, onLogin } = useAuth();
@@ -50,6 +51,7 @@ const Signin = () => {
         </S.InputWrap>
       </S.SignWrap>
       <S.Button onClick={menu === '회원가입' ? onRegister : onLogin}>벽난로 만들기</S.Button>
+      <Toaster />
     </S.SigninWrap>
   );
 };

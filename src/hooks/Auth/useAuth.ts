@@ -42,10 +42,11 @@ const useAuth = () => {
   const onRegister = () => {
     registerMutation.mutate(signupInfo, {
       onSuccess: () => {
-        toast.success('회원가입 성공!', { duration: 100 });
+        toast.success('회원가입 성공!', { duration: 800 });
+        setMenu('로그인');
       },
       onError: (error) => {
-        toast.error((error as AxiosError).message, { duration: 100 });
+        toast.error((error as AxiosError).message, { duration: 800 });
       },
     });
   };
@@ -54,9 +55,9 @@ const useAuth = () => {
   const onLogin = () => {
     loginMutation.mutate(loginInfo, {
       onSuccess: (res) => {
+        toast.success('로그인 성공!');
         token.setToken(ACCESS_TOKEN_KEY, res.data.accessToken);
         token.setToken(REFRESH_TOKEN_KEY, res.data.refreshToken);
-        toast.success('로그인 성공!');
         navigate('/');
       },
       onError: (error) => {
@@ -74,7 +75,7 @@ const useAuth = () => {
     handleLoginInfo,
 
     onRegister,
-    onLogin
+    onLogin,
   };
 };
 
