@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './style';
 import { NaeYangKkuTheme } from 'src/style/theme';
 import Modal from './Modal';
 
 const Home = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(true);
   return (
     <S.MainWrap>
       <S.TitleWrap>
@@ -18,7 +19,7 @@ const Home = () => {
       </S.TitleWrap>
       <S.SocksWrap></S.SocksWrap>
       <S.Button>벽난로 꾸며주기</S.Button>
-      <Modal />
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
     </S.MainWrap>
   );
 };
