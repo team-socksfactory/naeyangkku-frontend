@@ -18,7 +18,10 @@ const Home = () => {
       </S.TitleWrap>
       <S.SocksWrap></S.SocksWrap>
       <S.Button>벽난로 꾸며주기</S.Button>
-      <Modal />
+      {/* <Modal /> 
+      이거 양말 달고 나서 해야되서 useState로 관리 필요함 
+      나중에 서버 연결 끝나고 나서 할게
+      */} 
     </S.MainWrap>
   );
 };
