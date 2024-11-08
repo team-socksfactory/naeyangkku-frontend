@@ -2,7 +2,6 @@ import React from 'react';
 import * as S from './style';
 import LogoHat from 'src/assets/images/Group 17.svg';
 import useAuth from 'src/hooks/Auth/useAuth';
-import { useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
 const Signin = () => {

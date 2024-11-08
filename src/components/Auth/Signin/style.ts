@@ -43,8 +43,13 @@ export const TitleWrap = styled.div`
 
   img {
     position: absolute;
-    top: -25%;
-    left: 28%;
+    top: -20%;
+    left: 45%;
+
+    @media (max-width: 393px) {
+      top: -25%;
+      left: 28%;
+    }
   }
 `;
 
