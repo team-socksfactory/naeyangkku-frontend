@@ -78,6 +78,8 @@ export const Button = styled.div`
   align-self: center;
   gap: 20px;
 
+  cursor: pointer;
+
   @media (max-width: 393px) {
     width: 100%;
     height: 8%;

@@ -10,7 +10,7 @@ interface ModalProps {
 
 const Modal = ({ isOpen, setIsOpen }: ModalProps) => {
   const navigate = useNavigate();
-  const [visible, setIsVisible] = useState(isOpen);
+  const [, setIsVisible] = useState(isOpen);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -24,15 +24,13 @@ const Modal = ({ isOpen, setIsOpen }: ModalProps) => {
       return () => clearTimeout(timeOutId);
     }
   }, [isOpen]);
-  
+
   return (
-    <>
-      <S.MainWrap isOpen={isOpen}>
-        <img src={Socks} alt="" />
-        <button onClick={() => navigate('/login')}>내 벽난로 만들기</button>
-        <span onClick={handleClose}>닫기</span>
-      </S.MainWrap>
-    </>
+    <S.MainWrap isOpen={isOpen}>
+      <img src={Socks} alt="" />
+      <button onClick={() => navigate('/login')}>내 벽난로 만들기</button>
+      <span onClick={handleClose}>닫기</span>
+    </S.MainWrap>
   );
 };
 
