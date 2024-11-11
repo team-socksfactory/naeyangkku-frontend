@@ -89,7 +89,7 @@ export const Menu = styled.div<{ isSelected: boolean }>`
   }
 `;
 
-export const InputWrap = styled.div`
+export const InputWrap = styled.div<{ menu: '회원가입' | '로그인' }>`
   width: 100%;
   height: 85%;
 
@@ -101,7 +101,7 @@ export const InputWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: ${({ menu }) => (menu === '로그인' ? 'center' : 'space-evenly')};
 
   div {
     width: 90%;

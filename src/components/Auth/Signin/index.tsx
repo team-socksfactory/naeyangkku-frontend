@@ -22,7 +22,7 @@ const Signin = () => {
             <span>로그인</span>
           </S.Menu>
         </S.MenuSelectWrap>
-        <S.InputWrap>
+        <S.InputWrap menu={menu}>
           {menu === '회원가입' && (
             <div>
               <span>닉네임</span>
