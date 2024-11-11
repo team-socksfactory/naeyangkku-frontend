@@ -1,8 +1,10 @@
-export interface LetterResponse {
-  data: Letter[];
+export interface Letter {
+  id: number;
+  nickname: string;
+  content: string;
+  ownerId: number;
 }
 
-export interface Letter {
-  content: string;
-  nickname: string;
+export interface LetterResponse {
+  data: Letter[];
 }
