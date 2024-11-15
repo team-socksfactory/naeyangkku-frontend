@@ -173,8 +173,9 @@ export const OAuthWrap = styled.div`
   padding: 0px 0px 30px 0px;
 
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: flex-start;
+  gap: 20px;
 
   img {
     cursor: pointer;
