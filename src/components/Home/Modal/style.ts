@@ -12,7 +12,18 @@ const slideUp = keyframes`
   }
 `;
 
-export const MainWrap = styled.div`
+const slideDown = keyframes`
+  0% {
+    transform: translateY(0);
+    opacity: 1; 
+  }
+  100% {
+    transform: translateY(100%); 
+    opacity: 0; 
+  }
+`;
+
+export const MainWrap = styled.div<{ isOpen: boolean }>`
   width: 100vw;
   height: 40vh;
 
@@ -28,7 +39,8 @@ export const MainWrap = styled.div`
   border: none;
   border-radius: 30px 30px 0px 0px;
 
-  animation: ${slideUp} 0.5s ease-out;
+  animation: ${({ isOpen }) => (isOpen ? slideUp : slideDown)} 0.5s ease-out;
+  animation-fill-mode: forwards; /* 애니메이션 끝나고 상태 유지 */
 
   img {
     width: 240px;
@@ -47,7 +59,7 @@ export const MainWrap = styled.div`
     font-family: Pretendard;
     font-size: 20px;
     font-weight: 700;
-    line-height: 22px; /* 110% */
+    line-height: 22px;
 
     cursor: pointer;
   }
@@ -57,7 +69,7 @@ export const MainWrap = styled.div`
     font-family: 'GangwonEduSaeeum';
     font-size: 24px;
     font-weight: 400;
-    line-height: 22px; /* 91.667% */
+    line-height: 22px;
 
     cursor: pointer;
   }

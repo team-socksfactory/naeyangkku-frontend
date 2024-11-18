@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './style';
 import { NaeYangKkuTheme } from 'src/style/theme';
 import Modal from './Modal';
 
 const Home = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(true);
   return (
     <S.MainWrap>
       <S.TitleWrap>
@@ -18,10 +19,7 @@ const Home = () => {
       </S.TitleWrap>
       <S.SocksWrap></S.SocksWrap>
       <S.Button>벽난로 꾸며주기</S.Button>
-      {/* <Modal /> 
-      이거 양말 달고 나서 해야되서 useState로 관리 필요함 
-      나중에 서버 연결 끝나고 나서 할게
-      */} 
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
     </S.MainWrap>
   );
 };
