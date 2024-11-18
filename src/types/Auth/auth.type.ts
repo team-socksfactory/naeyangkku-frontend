@@ -11,6 +11,8 @@ export interface Login {
 
 export interface LoginResponse extends Response {
   data: {
+    id: number;
+    name: string;
     accessToken: string;
     refreshToken: string;
   };

@@ -58,7 +58,8 @@ const useAuth = () => {
         toast.success('로그인 성공!');
         token.setToken(ACCESS_TOKEN_KEY, res.data.accessToken);
         token.setToken(REFRESH_TOKEN_KEY, res.data.refreshToken);
-        navigate('/');
+        localStorage.setItem('userId', res.data.id.toString());
+        navigate(`/${localStorage.getItem('userId')}`);
       },
       onError: (error) => {
         toast.error((error as AxiosError).message);
