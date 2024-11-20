@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as S from "./style";
 import { NaeYangKkuTheme } from "src/style/theme";
 import { useNavigate } from "react-router-dom";
+import ProgressGraph from "../ProgressGraph";
 
 const DecorativePage = () => {
   const [selectedDecoration, setSelectedDecoration] = useState<number | null>(
@@ -35,6 +36,7 @@ const DecorativePage = () => {
 
   return (
     <S.MainWrap>
+      <ProgressGraph />
       <S.TitleWrap>
         <div>
           <h1 style={{ color: `${NaeYangKkuTheme.white}` }}>

@@ -43,7 +43,7 @@ export const TitleWrap = styled.div`
     height: fit-content;
     margin-block-start: 0;
     margin-block-end: 0;
-    margin-top: 60px;
+    margin-top: 6vh;
   }
 `;
 
@@ -102,7 +102,7 @@ export const Button = styled.div`
 
   color: #fff;
   font-family: "GangwonEduPower";
-  font-size: 20px;
+  font-size: 18px;
 
   display: inline-flex;
   justify-content: center;
