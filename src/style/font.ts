@@ -1,5 +1,4 @@
-import { GangwonEduSaeeum } from "src/assets";
-import { css } from "styled-components";
+import { css } from 'styled-components';
 
 export const NaeYangKkuTypography = Object.freeze({
   Title1: {
@@ -53,21 +52,21 @@ export const NaeYangKkuTypography = Object.freeze({
   Headline: {
     Bold: css`
       color: #000;
-      font-family: ${GangwonEduSaeeum};
+      font-family: 'GangwonEduSaeeum';
       font-size: 20px;
       font-weight: 400;
       line-height: 130%; /* 26px */
     `,
     Medium: css`
       color: #000;
-      font-family: ${GangwonEduSaeeum};
+      font-family: 'GangwonEduSaeeum';
       font-size: 20px;
       font-weight: 400;
       line-height: 130%; /* 26px */
     `,
     Regular: css`
       color: #000;
-      font-family: ${GangwonEduSaeeum};
+      font-family: 'GangwonEduSaeeum';
       font-size: 20px;
       font-weight: 400;
       line-height: 130%; /* 26px */
@@ -101,7 +100,7 @@ export const NaeYangKkuTypography = Object.freeze({
   Body: {
     Medium: css`
       color: #000;
-      font-family: ${GangwonEduSaeeum};
+      font-family: 'GangwonEduSaeeum';
       font-size: 24px;
       font-weight: 400;
       line-height: 130%; /* 31.2px */

@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import Write from './components/Write';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Router from './components/Router';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 function App() {
+  const [queryClient] = useState(
+      () =>
+          new QueryClient({
+            defaultOptions: {
+              queries: {
+                refetchOnWindowFocus: false,
+                retry: 0,
+              },
+            },
+          })
+  );
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/write" element={<Write />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+      <div className="App">
+        <QueryClientProvider client={queryClient}>
+          <Router />
+        </QueryClientProvider>
+      </div>
   );
 }
 

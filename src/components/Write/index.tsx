@@ -1,8 +1,6 @@
 import React from "react";
 import * as S from "./style";
 import SantaImage from "src/assets/img/write/santa.svg";
-import {contentInput, NameInput, NameWrap} from "./style";
-
 const Write: React.FC = () => {
     return (
         <S.MainWrap>
