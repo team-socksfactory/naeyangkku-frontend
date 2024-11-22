@@ -6,17 +6,19 @@ import SantaImage from "src/assets/img/write/santa.svg";
 const Write: React.FC = () => {
     const [message, setMessage] = useState("");
     const [name, setName] = useState("");
+    const [progress, setProgress] = useState(60);
     const navigate = useNavigate();
 
     const handlePreviewClick = () => {
+        setProgress(80);
         navigate("/modal", { state: { message, name } });
     };
 
     return (
         <S.MainWrap>
             <S.ProgressBar>
-                <div className="Progress"></div>
-                <S.ProgressText>60%</S.ProgressText>
+                <div className="Progress" style={{ width: `${progress}%` }}></div>
+                <S.ProgressText>{progress}%</S.ProgressText>
             </S.ProgressBar>
             <S.TitleWrap>
                 <h1>메세지를 남겨주세요!</h1>

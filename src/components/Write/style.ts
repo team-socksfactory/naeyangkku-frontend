@@ -25,6 +25,7 @@ export const ProgressBar = styled.div`
         background: #FF7777;
         height: 100%;
         border-radius: 0 10px 10px 0;
+        transition: width 1s ease-in-out, background 1s ease-in-out; 
     }
 `;
 
