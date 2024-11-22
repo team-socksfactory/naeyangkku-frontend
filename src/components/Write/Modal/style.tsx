@@ -21,7 +21,7 @@ export const ProgressBar = styled.div`
     display: flex;
 
     .Progress {
-        width: 60%;
+        width: 80%;
         background: #FF7777;
         height: 100%;
         border-radius: 0 10px 10px 0;
@@ -114,20 +114,6 @@ export const contentInput = styled.textarea`
     }
 `;
 
-export const NameWrap = styled.div`
-    position: relative;
-    margin-top: 25px;
-    background-color: #F7EEE7;
-    width: 300px;
-    height: 15px;
-    padding: 20px;
-    border-radius: 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-`;
-
 export const NameInput = styled.textarea`
     width: 90%;
     height: 20px;
@@ -138,25 +124,17 @@ export const NameInput = styled.textarea`
     font-family: "GangwonEduSaeeum OTF";
     color: #3D3332;
     box-sizing: border-box;
-    resize: none;
-    overflow: hidden;
+    resize: none; 
+    overflow: hidden; 
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
-    margin-top: -5px;
-
-    &::placeholder {
-        margin-top: -7px;
-        font-size: 20px;
-        color: #A9A9A9;
-    }
-
+    margin-bottom: -7px;
     &:focus {
         outline: none;
     }
 `;
-
 
 export const ShowWrap = styled.div`
     margin-top: 30px;
