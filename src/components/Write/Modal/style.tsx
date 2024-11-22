@@ -97,7 +97,7 @@ export const contentInput = styled.textarea`
     padding: 30px 0 0 0;
     border: none;
     background: transparent;
-    font-size: 20px;
+    font-size: 24px;
     font-family: "GangwonEduSaeeum OTF";
     color: #3D3332;
     box-sizing: border-box;
@@ -116,21 +116,23 @@ export const contentInput = styled.textarea`
 
 export const NameInput = styled.textarea`
     width: 90%;
-    height: 20px;
+    height: 24px;
     text-align: center;
     border: none;
     background: transparent;
-    font-size: 20px;
+    font-size: 24px;
     font-family: "GangwonEduSaeeum OTF";
     color: #3D3332;
     box-sizing: border-box;
-    resize: none; 
-    overflow: hidden; 
+    resize: none;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
-    margin-bottom: -7px;
+    margin-left: 15px;
+    margin-top: -10px;
+
     &:focus {
         outline: none;
     }

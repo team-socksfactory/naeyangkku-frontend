@@ -26,12 +26,12 @@ const Modal: React.FC = () => {
                 <S.Frame>
                     <S.InputWrap>
                         <S.contentInput value={message} readOnly />
-                        <S.NameInput value={name} readOnly />
+                        <S.NameInput value={`From. ${name}`} readOnly />
                     </S.InputWrap>
                 </S.Frame>
             </S.BackWrap>
             <S.ShowWrap>
-                <S.ShowSpan onClick={handleClose}>닫기</S.ShowSpan>
+                <S.ShowSpan onClick={handleClose}>양말 달기</S.ShowSpan>
             </S.ShowWrap>
         </S.MainWrap>
     );

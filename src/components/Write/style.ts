@@ -97,7 +97,7 @@ export const contentInput = styled.textarea`
     padding: 30px 0 0 0;
     border: none;
     background: transparent;
-    font-size: 20px;
+    font-size: 24px;
     font-family: "GangwonEduSaeeum OTF";
     color: #3D3332;
     box-sizing: border-box;
@@ -105,7 +105,7 @@ export const contentInput = styled.textarea`
     overflow-y: auto; 
 
     &::placeholder {
-        font-size: 20px;
+        font-size: 24px;
         color: #A9A9A9;
     }
 
@@ -130,11 +130,11 @@ export const NameWrap = styled.div`
 
 export const NameInput = styled.textarea`
     width: 90%;
-    height: 20px;
+    height: 25px;
     text-align: center;
     border: none;
     background: transparent;
-    font-size: 20px;
+    font-size: 24px;
     font-family: "GangwonEduSaeeum OTF";
     color: #3D3332;
     box-sizing: border-box;
@@ -144,11 +144,11 @@ export const NameInput = styled.textarea`
     align-items: center;
     justify-content: center;
     padding: 0;
-    margin-top: -5px;
+    margin-top: -10px;
 
     &::placeholder {
-        margin-top: -7px;
-        font-size: 20px;
+        margin-top: -10px;
+        font-size: 24px;
         color: #A9A9A9;
     }
 
