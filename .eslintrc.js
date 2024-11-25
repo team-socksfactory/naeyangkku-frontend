@@ -11,7 +11,7 @@ module.exports = {
     'no-alert': 'off',
     'no-console': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
-    eqeqeq: 'offf',
+    eqeqeq: 'off',
     'import/no-anonymous-default-export': 'off',
   },
 };
