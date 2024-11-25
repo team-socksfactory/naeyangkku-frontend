@@ -49,3 +49,5 @@ jobs:
             build s3://naeyangkku-bucket \
             --delete
         working-directory: /
+
+        
