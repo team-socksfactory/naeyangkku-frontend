@@ -25,7 +25,7 @@ export const ProgressBar = styled.div`
         background: #FF7777;
         height: 100%;
         border-radius: 0 10px 10px 0;
-        transition: width 1s ease-in-out, background 1s ease-in-out; 
+        transition: width 1s ease-in-out, background 1s ease-in-out;
     }
 `;
 
@@ -36,7 +36,7 @@ export const ProgressText = styled.span`
     color: #FFF;
     font-size: 20px;
     font-weight: bold;
-    font-family: "GangwonEduSaeeum OTF";
+    font-family: "GangwonEduSaeeum OTF";6/6
 `;
 
 export const TitleWrap = styled.div`

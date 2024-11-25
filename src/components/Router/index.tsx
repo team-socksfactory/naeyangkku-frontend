@@ -4,6 +4,7 @@ import Signin from '../Auth/Signin';
 import Home from '../Home';
 import Write from '../Write';
 import Modal from "../Write/Modal/index"
+import DecorativePage from "../DecorativePage/index";
 
 const Router = () => {
   return (
@@ -11,6 +12,7 @@ const Router = () => {
       <Routes>
         <Route path="/sign" element={<Signin />} />
         <Route path="/" element={<Home />} />
+        <Route path="/decorativePage" element={<DecorativePage />} />
         <Route path="/write" element={<Write />} />
         <Route path="/modal" element={<Modal />} />
       </Routes>
