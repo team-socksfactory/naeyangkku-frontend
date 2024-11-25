@@ -2,6 +2,7 @@ export interface Letter {
   id: number;
   nickname: string;
   content: string;
+  iconNm: number;
   ownerId: number;
 }
 

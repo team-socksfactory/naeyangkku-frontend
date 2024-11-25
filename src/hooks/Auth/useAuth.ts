@@ -10,7 +10,7 @@ import { Login, Signup } from 'src/types/Auth/auth.type';
 const useAuth = () => {
   const navigate = useNavigate();
   const [signupInfo, setSignupInfo] = useState<Signup>({
-    name: '',
+    nickname: '',
     email: '',
     password: '',
   });
@@ -59,7 +59,8 @@ const useAuth = () => {
         token.setToken(ACCESS_TOKEN_KEY, res.data.accessToken);
         token.setToken(REFRESH_TOKEN_KEY, res.data.refreshToken);
         localStorage.setItem('userId', res.data.id.toString());
-        navigate(`/${localStorage.getItem('userId')}`);
+        localStorage.setItem('name', res.data.nickname);
+        navigate(`/${localStorage.getItem('name')}`);
       },
       onError: (error) => {
         toast.error((error as AxiosError).message);

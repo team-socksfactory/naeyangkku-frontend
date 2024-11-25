@@ -1,25 +1,91 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import * as S from './style';
 import { NaeYangKkuTheme } from 'src/style/theme';
-import Modal from './Modal';
+import { useLocation, useParams } from 'react-router-dom';
+import { useGetLetter, useGetSharedLetter } from 'src/query/Home/home.query';
+import { EDIT_TREE_ITEM } from 'src/constants/home/home.constants';
+import { Shadow } from 'src/assets/images/socks';
+import { randomPosition } from 'src/utils/Home/randomPosition';
+import LetterDetail from './LetterDetail';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Home = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const myName = localStorage.getItem('name');
+  const userId = localStorage.getItem('userId');
+  const username = useLocation().pathname.split('/')[1];
+  const { data: myLetterList } = useGetLetter(userId!);
+  const { data: sharedLetterList } = useGetSharedLetter(username);
+  const { id } = useParams();
+
+  const handleIsOpen = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   return (
-    <S.MainWrap>
+    <S.MainWrap isOpen={isOpen}>
       <S.TitleWrap>
         <div style={{ display: 'inline-flex', gap: '3px' }}>
-          <h1 style={{ color: `${NaeYangKkuTheme.secondlyNormal}` }}>루돌돌</h1>
-          <h1>님의 벽난로</h1>
+          <h1 style={{ color: `${NaeYangKkuTheme.secondlyNormal}`, fontFamily: 'GangwonEdu Modu', fontSize: 27 }}>
+            {id}
+          </h1>
+          <h1>님의 트리</h1>
         </div>
-        <div>
-          <span style={{ fontSize: '16px' }}>12</span>
-          <span>개의 양말이 도착했어요!</span>
-        </div>
+        <S.letterCountSpan>
+          {myName == decodeURI(username)
+            ? myLetterList?.data.length === 0
+              ? '아직 받은 편지가 없어요..\n편지를 부탁해 보세요!'
+              : `${myLetterList?.data?.length}개의 양말이 도착했어요`
+            : sharedLetterList?.data.length === 0
+            ? '아직 받은 편지가 없어요..\n편지를 부탁해 보세요!'
+            : `${sharedLetterList?.data?.length}개의 양말이 도착했어요`}
+        </S.letterCountSpan>
       </S.TitleWrap>
-      <S.SocksWrap></S.SocksWrap>
-      <S.Button>벽난로 꾸며주기</S.Button>
-      <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
+      <S.SocksWrap>
+        <S.IconWrap>
+          {myName == decodeURI(username)
+            ? myLetterList?.data.map((letter) => {
+                const { x, y } = randomPosition(319, 524);
+                const iconItem = EDIT_TREE_ITEM.find((item) => item.iconNm === letter.iconNm);
+                return (
+                  <div key={letter.id} style={{ left: `${x}px`, top: `${y}px` }} onClick={handleIsOpen}>
+                    <img src={iconItem?.src} alt="" />
+                    <img src={Shadow} alt="" className="shadow" />
+                    <span>{letter.nickname}</span>
+                  </div>
+                );
+              })
+            : sharedLetterList?.data.map((letter) => {
+                const { x, y } = randomPosition(319, 524);
+                const iconItem = EDIT_TREE_ITEM.find((item) => item.iconNm === letter.iconNm);
+                return (
+                  <div key={letter.id} style={{ left: `${x}px`, top: `${y}px` }} onClick={handleIsOpen}>
+                    <img src={iconItem?.src} alt="" />
+                    <img src={Shadow} alt="" className="shadow" />
+                    <span>{letter.nickname}</span>
+                  </div>
+                );
+              })}
+        </S.IconWrap>
+      </S.SocksWrap>
+      <S.Button
+        isOwner={myName == decodeURI(username)}
+        onClick={() => {
+          if (myName == decodeURI(username)) {
+            navigator.clipboard.writeText(window.location.href);
+            toast.success('트리 링크가 복사되었어요!');
+          }
+        }}
+      >
+        {myName == decodeURI(username) ? '내 트리 링크 복사하기' : '편지 남겨주기'}
+      </S.Button>
+      {myName != decodeURI(username) && (
+        <p style={{ position: 'absolute', top: '92%', left: '18%' }}>
+          편지 남기기 기능은 로그인한 사용자만 이용할 수 있어요
+        </p>
+      )}
+      {isOpen === true && <LetterDetail isOpen={isOpen} handleIsOpen={handleIsOpen} />}
+      <Toaster />
     </S.MainWrap>
   );
 };

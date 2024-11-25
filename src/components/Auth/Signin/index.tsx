@@ -27,7 +27,7 @@ const Signin = () => {
           {menu === '회원가입' && (
             <div>
               <span>닉네임</span>
-              <input placeholder="10글자 이하" name="name" value={signupInfo.name} onChange={handleSignupInfo} />
+              <input placeholder="10글자 이하" name="nickname" value={signupInfo.nickname} onChange={handleSignupInfo} />
             </div>
           )}
           <div>
