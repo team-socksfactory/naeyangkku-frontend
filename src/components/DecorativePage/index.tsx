@@ -28,7 +28,7 @@ const DecorativePage = () => {
 
   const handleNextClick = () => {
     if (selectedDecoration !== null) {
-      navigate("/");
+      navigate("/write");
     } else {
       alert("장식을 선택해주세요!");
     }
