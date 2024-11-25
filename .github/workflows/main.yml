@@ -1,5 +1,5 @@
 name: client
-#트리거: 여기서는 main 브랜치에 push되는 경우
+# 트리거: 여기서는 main 브랜치에 push되는 경우
 on:
   push:
     branches:
@@ -20,7 +20,7 @@ jobs:
         with:
           name: 'config.json'
           json: ${{ secrets.CONFIG_JSON }}
-          dir: './src/config'  
+          dir: './src/config'
 
       - name: Install dependencies
         run: npm install
@@ -46,8 +46,5 @@ jobs:
         run: |
           aws s3 sync \
             --region ap-northeast-2 \
-            build s3://naeyangkku-bucket \
+            ./build s3://naeyangkku-bucket \
             --delete
-        working-directory: /
-
-        
