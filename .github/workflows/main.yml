@@ -1,5 +1,5 @@
 name: client
-# 트리거: 여기서는 main 브랜치에 push되는 경우
+
 on:
   push:
     branches:
