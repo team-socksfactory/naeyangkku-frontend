@@ -87,7 +87,7 @@ const Home = () => {
       >
         {myName === decodeURI(username) ? '내 트리 링크 복사하기' : '편지 남겨주기'}
       </S.Button>
-      {myName !== decodeURI(username) && (
+      {token.getToken(ACCESS_TOKEN_KEY) && (
         <p style={{ position: 'absolute', top: '92%', left: '18%' }}>
           편지 남기기 기능은 로그인한 사용자만 이용할 수 있어요
         </p>
