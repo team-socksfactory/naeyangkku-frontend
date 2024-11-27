@@ -22,14 +22,14 @@ const ResponseHandler = async (error: AxiosError) => {
       response: { status },
     } = error;
 
-    const usingAccessToken = token.getToken(ACCESS_TOKEN_KEY);
-    const usingRefreshToken = token.getToken(REFRESH_TOKEN_KEY);
+    const usingAccessToken = token.getToken(ACCESS_TOKEN_KEY)?.split('Bearer ')[1];
+    const usingRefreshToken = token.getToken(REFRESH_TOKEN_KEY)?.split('Bearer ')[1];
 
     if (status === 401 && usingAccessToken !== undefined && usingRefreshToken !== undefined && !isRefreshing) {
       isRefreshing = true;
 
       try {
-        const { data: newAccessToken } = await axios.post(`${CONFIG.SERVER}/refresh`, {
+        const { data: newAccessToken } = await axios.post(`${CONFIG.SERVER}/user/refresh`, {
           refreshToken: usingAccessToken,
         }); //CHANGE YOUR API URL && BODY VALUE
         customAxios.defaults.headers.common[REQUEST_TOKEN_KEY] = newAccessToken;

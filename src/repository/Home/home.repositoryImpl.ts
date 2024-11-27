@@ -2,6 +2,8 @@ import { LetterResponse } from 'src/types/Home/home.type';
 import { HomeRepository } from './home.repository';
 import customAxios from 'src/libs/axios/customAxios';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import CONFIG from 'src/config/config.json';
 
 class HomeRepositoryImpl implements HomeRepository {
   public async getLetter(ownerId: string): Promise<LetterResponse> {
@@ -15,7 +17,7 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   public async getSharedLetter(ownerNickname: string): Promise<LetterResponse> {
-    const { data } = await customAxios.get(`/share/${ownerNickname}`);
+    const { data } = await axios.get(`${CONFIG.SERVER}/share/${ownerNickname}`);
 
     return data;
   }
