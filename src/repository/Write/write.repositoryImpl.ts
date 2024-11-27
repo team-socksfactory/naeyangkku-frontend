@@ -28,7 +28,7 @@ function getCookie(name: string): void | string | null {
 }
 
 class WriteRepositoryImpl implements WriteRepository {
-    public async postLetter(writeData: Omit<Write, 'id'>): Promise<WriteResponse> {
+    public async postLetter(writeData: Omit<Write, 'id' | 'ownerId'> & { ownerId: number }): Promise<WriteResponse> {
         console.log('쿠키 전체 내용:', document.cookie);
 
         let token = getCookie('token');
@@ -37,17 +37,11 @@ class WriteRepositoryImpl implements WriteRepository {
             token = localStorage.getItem('token');
         }
 
-        const ownerId = localStorage.getItem('ownerId');
         console.log('최종 토큰:', token);
 
         if (!token) {
             console.error('토큰 없음');
             throw new Error("로그인이 필요합니다.");
-        }
-
-        if (!ownerId) {
-            console.error('ownerId 없음');
-            throw new Error("ownerId를 가져올 수 없습니다.");
         }
 
         try {
@@ -61,10 +55,7 @@ class WriteRepositoryImpl implements WriteRepository {
 
             const { data } = await customAxios.post<WriteResponse>(
                 '/letter/send',
-                {
-                    ...writeData,
-                    ownerId: Number(ownerId)
-                },
+                writeData,
                 {
                     headers: {
                         'Authorization': `${token}`,
@@ -93,6 +84,7 @@ class WriteRepositoryImpl implements WriteRepository {
         }
     }
 }
+
 
 const writeRepositoryImpl = new WriteRepositoryImpl();
 export default writeRepositoryImpl;
