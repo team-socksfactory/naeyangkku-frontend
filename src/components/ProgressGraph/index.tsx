@@ -4,7 +4,7 @@ import * as S from "./style";
 const ProgressGraph = () => {
   return (
     <S.GraphWrap>
-      <S.ProgressRate></S.ProgressRate>
+      <S.ProgressRate />
       <S.RateText>
         <span>30%</span>
       </S.RateText>

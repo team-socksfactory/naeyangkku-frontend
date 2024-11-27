@@ -1,5 +1,5 @@
 export interface Signup {
-  name: string;
+  nickname: string;
   email: string;
   password: string;
 }
@@ -12,7 +12,7 @@ export interface Login {
 export interface LoginResponse extends Response {
   data: {
     id: number;
-    name: string;
+    nickname: string;
     accessToken: string;
     refreshToken: string;
   };

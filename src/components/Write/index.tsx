@@ -11,7 +11,7 @@ const Write: React.FC = () => {
 
     const handlePreviewClick = () => {
         setProgress(80);
-        navigate("/modal", { state: { message, name } });
+        navigate("/modal/:id", { state: { message, name } });
     };
 
     return (
