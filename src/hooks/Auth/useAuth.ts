@@ -55,12 +55,11 @@ const useAuth = () => {
   const onLogin = () => {
     loginMutation.mutate(loginInfo, {
       onSuccess: (res) => {
-        toast.success('로그인 성공!');
         token.setToken(ACCESS_TOKEN_KEY, res.data.accessToken);
         token.setToken(REFRESH_TOKEN_KEY, res.data.refreshToken);
         localStorage.setItem('userId', res.data.id.toString());
         localStorage.setItem('name', res.data.nickname);
-        navigate(`/${localStorage.getItem('name')}`);
+        navigate(`/${localStorage.getItem('name')}`, { state: 'success' });
       },
       onError: (error) => {
         toast.error((error as AxiosError).message);

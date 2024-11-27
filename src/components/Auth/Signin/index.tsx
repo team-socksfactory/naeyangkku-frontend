@@ -2,7 +2,6 @@ import React from 'react';
 import * as S from './style';
 import LogoHat from 'src/assets/images/Group 17.svg';
 import useAuth from 'src/hooks/Auth/useAuth';
-import { Toaster } from 'react-hot-toast';
 import { OAUTH_ITEMS } from 'src/constants/auth/oauth.constants';
 
 const Signin = () => {
@@ -56,7 +55,6 @@ const Signin = () => {
           <img src={item.src} key={item.id} alt={item.id} />
         ))}
       </S.OAuthWrap>
-      <Toaster />
     </S.SigninWrap>
   );
 };

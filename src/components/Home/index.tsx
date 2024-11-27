@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import * as S from './style';
 import { NaeYangKkuTheme } from 'src/style/theme';
 import { useLocation, useParams } from 'react-router-dom';
-import { useGetLetter, useGetSharedLetter } from 'src/query/Home/home.query';
 import { EDIT_TREE_ITEM } from 'src/constants/home/home.constants';
 import { Shadow } from 'src/assets/images/socks';
 import { randomPosition } from 'src/utils/Home/randomPosition';
@@ -21,6 +20,13 @@ const Home = () => {
   const userId = localStorage.getItem('userId');
   const username = useLocation().pathname.split('/')[1];
   const { id } = useParams();
+  const location = useLocation();
+
+  const successToast = () => {
+    if (token.getToken(ACCESS_TOKEN_KEY) && location.state === 'success') {
+      toast.success('로그인 성공', { duration: 800 });
+    }
+  };
 
   const getLetterByToken = async () => {
     if (token.getToken(ACCESS_TOKEN_KEY) !== undefined) {
@@ -34,6 +40,7 @@ const Home = () => {
 
   useEffect(() => {
     getLetterByToken();
+    successToast();
   }, []);
 
   const handleIsOpen = () => {
