@@ -59,7 +59,7 @@ const useAuth = () => {
         token.setToken(REFRESH_TOKEN_KEY, res.data.refreshToken);
         localStorage.setItem('userId', res.data.id.toString());
         localStorage.setItem('name', res.data.nickname);
-        navigate(`/${localStorage.getItem('name')}`, { state: 'success' });
+        navigate(`/${localStorage.getItem('userId')}`, { state: 'success' });
       },
       onError: (error) => {
         toast.error((error as AxiosError).message);

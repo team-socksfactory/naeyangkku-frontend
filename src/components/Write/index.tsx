@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import * as S from "./style";
 import SantaImage from "src/assets/img/write/santa.svg";
 
@@ -8,10 +8,11 @@ const Write: React.FC = () => {
     const [name, setName] = useState("");
     const [progress, setProgress] = useState(60);
     const navigate = useNavigate();
+    const { id } = useParams();
 
     const handlePreviewClick = () => {
         setProgress(80);
-        navigate("/modal/:id", { state: { message, name } });
+        navigate(`/modal/${id}`, { state: { message, name, id } });
     };
 
     return (

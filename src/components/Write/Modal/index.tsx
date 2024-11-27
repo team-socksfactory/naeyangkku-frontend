@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import * as S from "./style";
 import SantaImage from "src/assets/img/write/santa.svg";
 import { usePostMyLetter } from "src/query/Write/write.query";
@@ -9,11 +9,14 @@ const Modal: React.FC = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { message, name } = location.state || { message: "", name: "" };
+    const { id } = useParams();
 
     const { mutate: postLetter, isLoading } = usePostMyLetter();
 
     const handlePostLetter = () => {
-        const ownerId = localStorage.getItem('ownerId');
+        const ownerId = id;
+
+        console.log("ownerId:", ownerId);
 
         const missingInfo: string[] = [];
 
@@ -32,7 +35,6 @@ const Modal: React.FC = () => {
             iconNm: 2,
             ownerId: Number(ownerId)
         };
-
         postLetter(writeData, {
             onSuccess: () => {
                 alert("편지가 성공적으로 보내졌습니다!");
@@ -44,6 +46,7 @@ const Modal: React.FC = () => {
             },
         });
     };
+
 
     return (
         <S.MainWrap>

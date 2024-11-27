@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import * as S from './style';
 import { NaeYangKkuTheme } from 'src/style/theme';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import ProgressGraph from '../ProgressGraph';
 import toast, { Toaster } from 'react-hot-toast';
 
 const DecorativePage = () => {
   const [selectedDecoration, setSelectedDecoration] = useState<number | null>(null);
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const ornamentsComponents: JSX.Element[] = [
     <S.Ornament1 />,
@@ -27,7 +28,11 @@ const DecorativePage = () => {
 
   const handleNextClick = () => {
     if (selectedDecoration !== null) {
-      navigate("/write/:id");
+      navigate(`/write/${id}`, {
+        state: {
+          decorationIndex: selectedDecoration
+        }
+      });
     } else {
       toast.error('장식을 선택해주세요!');
     }
