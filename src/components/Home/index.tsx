@@ -25,12 +25,12 @@ const Home = () => {
   const notify = () => toast.success('로그인 성공');
 
   const getLetterByToken = async () => {
-    if (token.getToken(ACCESS_TOKEN_KEY) !== undefined) {
-      const letter = await homeRepositoryImpl.getLetter(userId!);
-      setMyLetterData(letter);
-    } else {
+    if (myName !== decodeURI(username)) {
       const letter = await homeRepositoryImpl.getSharedLetter(username);
       setSharedLetterData(letter);
+    } else if (token.getToken(ACCESS_TOKEN_KEY) !== undefined) {
+      const letter = await homeRepositoryImpl.getLetter(userId!);
+      setMyLetterData(letter);
     }
   };
 
