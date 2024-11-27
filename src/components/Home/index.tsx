@@ -24,7 +24,7 @@ const Home = () => {
 
   const successToast = () => {
     if (token.getToken(ACCESS_TOKEN_KEY) && location.state === 'success') {
-      toast.success('로그인 성공', { duration: 800 });
+      toast.success('로그인 성공', { duration: 1600 });
     }
   };
 
