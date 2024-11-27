@@ -2,14 +2,47 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import * as S from "./style";
 import SantaImage from "src/assets/img/write/santa.svg";
+import { usePostMyLetter } from "src/query/Write/write.query";
+import { Write } from "src/types/Write/write.type";
 
 const Modal: React.FC = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { message, name } = location.state || { message: "", name: "" };
 
-    const handleClose = () => {
-        navigate("/");
+    const { mutate: postLetter, isLoading } = usePostMyLetter();
+
+    const handlePostLetter = () => {
+        const ownerId = localStorage.getItem('ownerId');
+
+        const missingInfo: string[] = [];
+
+        if (!message) missingInfo.push("메시지");
+        if (!name) missingInfo.push("이름");
+        if (!ownerId) missingInfo.push("사용자 ID");
+
+        if (missingInfo.length > 0) {
+            alert(`다음 정보가 부족합니다: ${missingInfo.join(", ")}`);
+            return;
+        }
+
+        const writeData: Write = {
+            content: message,
+            nickname: name,
+            iconNm: 2,
+            ownerId: Number(ownerId)
+        };
+
+        postLetter(writeData, {
+            onSuccess: () => {
+                alert("편지가 성공적으로 보내졌습니다!");
+                navigate("/");
+            },
+            onError: (error: Error) => {
+                console.error("편지 전송 실패:", error);
+                alert(error.message || "편지를 보내는 데 실패했습니다. 다시 시도해주세요.");
+            },
+        });
     };
 
     return (
@@ -23,6 +56,7 @@ const Modal: React.FC = () => {
             </S.TitleWrap>
             <S.BackWrap>
                 <S.IconImage src={SantaImage} alt="Message icon" />
+
                 <S.Frame>
                     <S.InputWrap>
                         <S.contentInput value={message} readOnly />
@@ -31,7 +65,9 @@ const Modal: React.FC = () => {
                 </S.Frame>
             </S.BackWrap>
             <S.ShowWrap>
-                <S.ShowSpan onClick={handleClose}>양말 달기</S.ShowSpan>
+                <S.ShowSpan as="button" onClick={handlePostLetter} disabled={isLoading}>
+                    {isLoading ? "전송 중..." : "양말 달기"}
+                </S.ShowSpan>
             </S.ShowWrap>
         </S.MainWrap>
     );

@@ -152,6 +152,10 @@ export const ShowWrap = styled.div`
     align-items: center; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
+    &:disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
 `;
 
 export const ShowSpan = styled.span`
