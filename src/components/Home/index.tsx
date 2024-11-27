@@ -6,7 +6,7 @@ import { EDIT_TREE_ITEM } from 'src/constants/home/home.constants';
 import { Shadow } from 'src/assets/images/socks';
 import { randomPosition } from 'src/utils/Home/randomPosition';
 import LetterDetail from './LetterDetail';
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { ToastBar, Toaster } from 'react-hot-toast';
 import token from 'src/libs/token/token';
 import { ACCESS_TOKEN_KEY } from 'src/constants/token.constants';
 import { LetterResponse } from 'src/types/Home/home.type';
@@ -22,11 +22,7 @@ const Home = () => {
   const { id } = useParams();
   const location = useLocation();
 
-  const successToast = () => {
-    if (token.getToken(ACCESS_TOKEN_KEY) && location.state === 'success') {
-      toast.success('로그인 성공', { duration: 1600 });
-    }
-  };
+  const notify = () => toast.success('로그인 성공');
 
   const getLetterByToken = async () => {
     if (token.getToken(ACCESS_TOKEN_KEY) !== undefined) {
@@ -40,8 +36,7 @@ const Home = () => {
 
   useEffect(() => {
     getLetterByToken();
-    successToast();
-  }, []);
+  }, [token.getToken(ACCESS_TOKEN_KEY)]);
 
   const handleIsOpen = () => {
     setIsOpen((prev) => !prev);
@@ -98,6 +93,7 @@ const Home = () => {
         </p>
       )}
       {isOpen && <LetterDetail isOpen={isOpen} handleIsOpen={handleIsOpen} />}
+      {token.getToken(ACCESS_TOKEN_KEY) && location.state === 'success' && notify()}
       <Toaster />
     </S.MainWrap>
   );
