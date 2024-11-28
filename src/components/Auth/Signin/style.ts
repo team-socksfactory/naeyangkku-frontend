@@ -155,7 +155,7 @@ export const Button = styled.button`
   background-color: ${NaeYangKkuTheme.secondlyNormal};
   border: none;
   border-radius: 40px;
-  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 4px 24px 0px rgba(255, 119, 119, 0.6);
 
   color: #fff;
   font-family: Pretendard;

@@ -25,7 +25,7 @@ const ResponseHandler = async (error: AxiosError) => {
     const usingAccessToken = token.getToken(ACCESS_TOKEN_KEY)?.split('Bearer ')[1];
     const usingRefreshToken = token.getToken(REFRESH_TOKEN_KEY)?.split('Bearer ')[1];
 
-    if (status === 401 && usingAccessToken !== undefined && usingRefreshToken !== undefined && !isRefreshing) {
+    if (status === 403 && usingAccessToken !== undefined && usingRefreshToken !== undefined && !isRefreshing) {
       isRefreshing = true;
 
       try {

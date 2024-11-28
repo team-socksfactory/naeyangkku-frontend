@@ -17,3 +17,7 @@ export interface LoginResponse extends Response {
     refreshToken: string;
   };
 }
+
+export interface NicknameResponse extends Response {
+  data: string;
+}

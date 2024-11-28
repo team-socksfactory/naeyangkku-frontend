@@ -69,7 +69,6 @@ export const letterCountSpan = styled.span`
 export const SocksWrap = styled.div`
   width: 100%;
   height: 80%;
-  border: 1px solid #000;
   position: relative;
 `;
 
@@ -107,7 +106,7 @@ export const Button = styled.div<{ isOwner: boolean }>`
 
   border: none;
   border-radius: 40px;
-  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.5);
 
   background-color: ${({ isOwner }) => (isOwner ? '#776F6B' : NaeYangKkuTheme.secondlyNormal)};
 
