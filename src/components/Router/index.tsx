@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Signin from '../Auth/Signin';
 import Home from '../Home';
+import OnBoarding from '../Common/OnBoarding';
 import Write from '../Write';
 import Modal from "../Write/Modal/index"
 import DecorativePage from '../DecorativePage';
@@ -19,6 +20,7 @@ const Router = () => {
         )}
         <Route path="/" element={<Navigate to="/sign" />} />
         <Route path="/sign" element={<Signin />} />
+        <Route path="/" element={<OnBoarding />} />
         <Route path="/" element={<Home />} />
         <Route path="/decorativePage/:id" element={<DecorativePage />} />
         <Route path="/write/:id" element={<Write />} />
