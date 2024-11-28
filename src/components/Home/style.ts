@@ -10,7 +10,7 @@ export const MainWrap = styled.div<{ isOpen: boolean }>`
   display: flex;
   flex-direction: column;
 
-  background-image: url(${DesktopBackgroundImage});
+  background-image: url(${MobileBackgroundImage});
   background-repeat: no-repeat;
   background-size: cover;
 
