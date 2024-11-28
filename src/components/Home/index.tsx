@@ -120,10 +120,19 @@ const Home = () => {
         </S.SocksWrap>
         <S.Button
           isOwner={myName === decodeURI(username)}
-          onClick={() => {
+          onClick={async () => {
             if (myName === decodeURI(username)) {
-              navigator?.clipboard?.writeText(window.location.href);
-              toast.success('트리 링크가 복사되었어요!');
+              try {
+                if (navigator.clipboard) {
+                  await navigator.clipboard.writeText(window.location.href);
+                  toast.success('트리 링크가 복사되었어요!');
+                } else {
+                  toast.error('클립보드 복사가 지원되지 않는 브라우저입니다.');
+                }
+              } catch (err) {
+                console.error('클립보드 복사 중 오류 발생:', err);
+                toast.error('클립보드 복사에 실패했습니다.');
+              }
             } else {
               navigate(`/decorativePage/${id}`);
             }
@@ -131,6 +140,7 @@ const Home = () => {
         >
           {myName === decodeURI(username) ? '내 트리 링크 복사하기' : '편지 남겨주기'}
         </S.Button>
+
         {!token.getToken(ACCESS_TOKEN_KEY) && (
           <p style={{ position: 'absolute', top: '92%', left: '18%' }}>
             편지 남기기 기능은 로그인한 사용자만 이용할 수 있어요
