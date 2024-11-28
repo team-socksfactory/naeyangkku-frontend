@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import * as S from './style';
 import { NaeYangKkuTheme } from 'src/style/theme';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { EDIT_TREE_ITEM } from 'src/constants/home/home.constants';
 import { Shadow } from 'src/assets/images/socks';
 import { randomPosition } from 'src/utils/Home/randomPosition';
@@ -11,9 +11,9 @@ import token from 'src/libs/token/token';
 import { ACCESS_TOKEN_KEY } from 'src/constants/token.constants';
 import { Letter } from 'src/types/Home/home.type';
 import homeRepositoryImpl from 'src/repository/Home/home.repositoryImpl';
-import { useGetIdByNickname, useGetUserNickanme } from 'src/query/Auth/auth.query';
 import React from 'react';
 import authRepositoryImpl from 'src/repository/Auth/auth.repositoryImpl';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -118,28 +118,15 @@ const Home = () => {
                 })}
           </S.IconWrap>
         </S.SocksWrap>
-        <S.Button
-          isOwner={myName === decodeURI(username)}
-          onClick={async () => {
-            if (myName === decodeURI(username)) {
-              try {
-                if (navigator.clipboard) {
-                  await navigator.clipboard.writeText(window.location.href);
-                  toast.success('트리 링크가 복사되었어요!');
-                } else {
-                  toast.error('클립보드 복사가 지원되지 않는 브라우저입니다.');
-                }
-              } catch (err) {
-                console.error('클립보드 복사 중 오류 발생:', err);
-                toast.error('클립보드 복사에 실패했습니다.');
-              }
-            } else {
-              navigate(`/decorativePage/${id}`);
-            }
-          }}
-        >
-          {myName === decodeURI(username) ? '내 트리 링크 복사하기' : '편지 남겨주기'}
-        </S.Button>
+        {myName === decodeURI(username) ? (
+          <CopyToClipboard text={window.location.href} onCopy={() => toast.success('링크 복사 성공!')}>
+            <S.Button isOwner={myName === decodeURI(username)}>내 트리 링크 복사하기</S.Button>
+          </CopyToClipboard>
+        ) : (
+          <S.Button isOwner={myName === decodeURI(username)} onClick={() => navigate(`/decoratePage/${id}`)}>
+            편지 남겨주기
+          </S.Button>
+        )}
 
         {!token.getToken(ACCESS_TOKEN_KEY) && (
           <p style={{ position: 'absolute', top: '92%', left: '18%' }}>
