@@ -122,7 +122,7 @@ const Home = () => {
           isOwner={myName === decodeURI(username)}
           onClick={() => {
             if (myName === decodeURI(username)) {
-              navigator.clipboard.writeText(window.location.href);
+              navigator?.clipboard?.writeText(window.location.href);
               toast.success('트리 링크가 복사되었어요!');
             } else {
               navigate(`/decorativePage/${id}`);

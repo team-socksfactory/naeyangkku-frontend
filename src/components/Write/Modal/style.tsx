@@ -162,4 +162,6 @@ export const ShowSpan = styled.span`
     color: #3D3332;
     font-weight: bold;
     font-size: 20px;
+    border: none;
+    background: transparent;
 `;
