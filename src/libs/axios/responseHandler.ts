@@ -22,17 +22,17 @@ const ResponseHandler = async (error: AxiosError) => {
       response: { status },
     } = error;
 
-    const usingAccessToken = token.getToken(ACCESS_TOKEN_KEY);
-    const usingRefreshToken = token.getToken(REFRESH_TOKEN_KEY);
+    const usingAccessToken = token.getToken(ACCESS_TOKEN_KEY)?.split('Bearer ')[1];
+    const usingRefreshToken = token.getToken(REFRESH_TOKEN_KEY)?.split('Bearer ')[1];
 
-    if (status === 401 && usingAccessToken !== undefined && usingRefreshToken !== undefined && !isRefreshing) {
+    if (status === 403 && usingAccessToken !== undefined && usingRefreshToken !== undefined && !isRefreshing) {
       isRefreshing = true;
 
       try {
-        const { data: newAccessToken } = await axios.post(`${CONFIG.SERVER}/refresh`, {
+        const { data: newAccessToken } = await axios.post(`${CONFIG.SERVER}/user/refresh`, {
           refreshToken: usingAccessToken,
         }); //CHANGE YOUR API URL && BODY VALUE
-        customAxios.defaults.headers.common[REQUEST_TOKEN_KEY] = `Bearer ${newAccessToken}`;
+        customAxios.defaults.headers.common[REQUEST_TOKEN_KEY] = newAccessToken;
 
         token.setToken(ACCESS_TOKEN_KEY, newAccessToken);
 
@@ -41,15 +41,16 @@ const ResponseHandler = async (error: AxiosError) => {
 
         return new Promise((resolve) => {
           addRefeshSubscriber((accessToken: string) => {
-            originalRequest!.headers![REQUEST_TOKEN_KEY] = `Bearer ${accessToken}`;
+            originalRequest!.headers![REQUEST_TOKEN_KEY] = accessToken;
             resolve(customAxios(originalRequest!));
           });
         });
       } catch (error) {
         console.error('Failed to refresh access token:', error);
-        token.clearToken();
+
         window.alert('세션이 만료되었습니다.');
-        window.location.href = '/login';
+        token.clearToken();
+        window.location.href = '/sign';
       }
     }
   }

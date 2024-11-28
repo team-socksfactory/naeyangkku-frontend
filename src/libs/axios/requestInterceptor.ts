@@ -11,7 +11,7 @@ const requestInterceptor = (config: InternalAxiosRequestConfig, url: string): In
       console.error('Access token or refresh token not found.');
       window.location.href = url;
     } else {
-      config.headers[REQUEST_TOKEN_KEY] = `Bearer ${accessToken}`;
+      config.headers[REQUEST_TOKEN_KEY] = accessToken;
     }
   }
   return config;
