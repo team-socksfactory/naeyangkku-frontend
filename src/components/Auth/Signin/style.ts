@@ -112,7 +112,7 @@ export const InputWrap = styled.div<{ menu: '회원가입' | '로그인' }>`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 5px;
+    gap: 10px;
 
     span {
       color: #121212;
@@ -150,7 +150,7 @@ export const InputWrap = styled.div<{ menu: '회원가입' | '로그인' }>`
 `;
 
 export const Button = styled.button`
-  width: 100%;
+  width: 90%;
   height: 40%;
 
   background-color: ${NaeYangKkuTheme.secondlyNormal};
@@ -167,20 +167,20 @@ export const Button = styled.button`
 `;
 
 export const OAuthWrap = styled.div`
-  width: calc(100% - 20px);
+  width: calc(90% - 20px);
   height: 40%;
 
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 50px;
+  gap: 70px;
 
   padding-left: 20px;
 
   background-color: ${NaeYangKkuTheme.white};
   border: none;
   border-radius: 20px;
-  box-shadow: 0px 4px 24px 0px rgba(255, 119, 119, 0.4);
+  box-shadow: 0px 4px 24px 0px rgba(255, 119, 119, 0.3);
 
   cursor: pointer;
 

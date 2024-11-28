@@ -55,7 +55,16 @@ const Signin = () => {
           </div>
         </S.InputWrap>
       </S.SignWrap>
-      <div style={{ width: '80%', height: '20%', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+      <div
+        style={{
+          width: '100%',
+          height: '20%',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '15px',
+          alignItems: 'center',
+        }}
+      >
         <S.Button onClick={menu === '회원가입' ? onRegister : onLogin}>벽난로 만들기</S.Button>
         <S.OAuthWrap>
           <img src={Google} alt="" />
