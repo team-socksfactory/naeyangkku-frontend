@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import MobileBackgroundImage from 'src/assets/images/mobileBackground.svg';
-import DesktopBackgroundImage from 'src/assets/images/desktopBackground.png';
+import DesktopBackgroundImage from 'src/assets/images/desktopBackground.svg';
 import { NaeYangKkuTheme } from 'src/style/theme';
 
 export const MainWrap = styled.div<{ isOpen: boolean }>`
@@ -10,7 +10,7 @@ export const MainWrap = styled.div<{ isOpen: boolean }>`
   display: flex;
   flex-direction: column;
 
-  background-image: url(${MobileBackgroundImage});
+  background-image: url(${DesktopBackgroundImage});
   background-repeat: no-repeat;
   background-size: cover;
 
