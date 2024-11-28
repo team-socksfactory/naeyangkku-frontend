@@ -3,15 +3,16 @@ import styled from 'styled-components';
 
 export const SigninWrap = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 100px);
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 35px;
 
   background: #fdedee;
+  padding-top: 100px;
 `;
 
 export const TitleWrap = styled.div`
@@ -56,7 +57,7 @@ export const TitleWrap = styled.div`
 
 export const SignWrap = styled.div`
   width: 90%;
-  height: 50%;
+  height: 55%;
 
   display: flex;
   flex-direction: column;
@@ -149,35 +150,44 @@ export const InputWrap = styled.div<{ menu: '회원가입' | '로그인' }>`
 `;
 
 export const Button = styled.button`
-  width: 80%;
-  height: 7%;
+  width: 100%;
+  height: 40%;
 
   background-color: ${NaeYangKkuTheme.secondlyNormal};
   border: none;
-  border-radius: 40px;
+  border-radius: 20px;
   box-shadow: 0px 4px 24px 0px rgba(255, 119, 119, 0.6);
 
   color: #fff;
-  font-family: Pretendard;
-  font-size: 20px;
-  font-weight: 700;
+  font-family: 'GangwonEduPower';
+  font-size: 18px;
   line-height: 22px; /* 110% */
 
   cursor: pointer;
 `;
 
 export const OAuthWrap = styled.div`
-  width: 100%;
-  height: 8%;
-
-  padding: 0px 0px 30px 0px;
+  width: calc(100% - 20px);
+  height: 40%;
 
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 20px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 50px;
 
-  img {
-    cursor: pointer;
+  padding-left: 20px;
+
+  background-color: ${NaeYangKkuTheme.white};
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 4px 24px 0px rgba(255, 119, 119, 0.4);
+
+  cursor: pointer;
+
+  span {
+    color: #5b5555;
+    font-family: 'GangwonEduPower';
+    font-size: 18px;
+    line-height: 22px; /* 110% */
   }
 `;

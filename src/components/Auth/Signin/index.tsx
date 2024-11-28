@@ -3,6 +3,7 @@ import * as S from './style';
 import LogoHat from 'src/assets/images/Group 17.svg';
 import useAuth from 'src/hooks/Auth/useAuth';
 import { OAUTH_ITEMS } from 'src/constants/auth/oauth.constants';
+import { Google } from 'src/assets/images/auth';
 
 const Signin = () => {
   const { signupInfo, loginInfo, handleLoginInfo, handleSignupInfo, menu, setMenu, onRegister, onLogin } = useAuth();
@@ -26,7 +27,12 @@ const Signin = () => {
           {menu === '회원가입' && (
             <div>
               <span>닉네임</span>
-              <input placeholder="10글자 이하" name="nickname" value={signupInfo.nickname} onChange={handleSignupInfo} />
+              <input
+                placeholder="10글자 이하"
+                name="nickname"
+                value={signupInfo.nickname}
+                onChange={handleSignupInfo}
+              />
             </div>
           )}
           <div>
@@ -49,12 +55,13 @@ const Signin = () => {
           </div>
         </S.InputWrap>
       </S.SignWrap>
-      <S.Button onClick={menu === '회원가입' ? onRegister : onLogin}>벽난로 만들기</S.Button>
-      <S.OAuthWrap>
-        {OAUTH_ITEMS.map((item) => (
-          <img src={item.src} key={item.id} alt={item.id} />
-        ))}
-      </S.OAuthWrap>
+      <div style={{ width: '80%', height: '20%', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+        <S.Button onClick={menu === '회원가입' ? onRegister : onLogin}>벽난로 만들기</S.Button>
+        <S.OAuthWrap>
+          <img src={Google} alt="" />
+          <span>구글 로그인</span>
+        </S.OAuthWrap>
+      </div>
     </S.SigninWrap>
   );
 };
