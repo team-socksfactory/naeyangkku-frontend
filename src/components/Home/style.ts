@@ -27,9 +27,31 @@ export const MainWrap = styled.div<{ isOpen: boolean }>`
     line-height: 22px; /* 169.231% */
   }
 
-  @media (max-width: 393px) {
+  @media (max-width: 750px) {
+    width: calc(100vw - 90px);
+    height: calc(100vh - 248px);
     background-image: url(${MobileBackgroundImage});
-    background-size: contain;
+    background-size: cover;
+    background-position: left;
+
+    padding: 180px 50px 68px 50px;
+  }
+
+  @media (max-width: 1080px) {
+    width: calc(100vw - 150px);
+    height: calc(100vh - 460px);
+    padding: 360px 50px 100px 100px;
+    background-image: url(${MobileBackgroundImage});
+    background-size: cover;
+  }
+
+  @media (max-width: 1242px) {
+    width: calc(100vw - 150px);
+    height: calc(100vh - 460px);
+    padding: 360px 50px 100px 100px;
+    background-image: url(${MobileBackgroundImage});
+    background-size: cover;
+    background-position: center;
   }
 
   ${({ isOpen }) =>
@@ -46,24 +68,72 @@ export const TitleWrap = styled.div`
   gap: 8px;
   align-items: flex-start;
 
-  h1 {
+  div > h1 {
     color: #fff;
     font-family: 'GangwonEduSaeeum';
-    font-size: 32px;
+    font-size: 2.5rem;
     font-weight: 400;
     height: fit-content;
     margin-block-start: 0;
     margin-block-end: 0;
     line-height: 22px;
   }
+
+  div > .nickname {
+    font-family: 'GangwonEdu Modu';
+    font-size: 2.7rem;
+    color: ${NaeYangKkuTheme.secondlyNormal};
+  }
+
+  @media (max-width: 750px) {
+    div > h1 {
+      font-size: 3rem;
+    }
+
+    div > .nickname {
+      font-size: 3.5rem;
+    }
+  }
+
+  @media (max-width: 1080px) {
+    div > h1 {
+      font-size: 4rem;
+    }
+
+    div > .nickname {
+      font-size: 4.5rem;
+    }
+  }
+
+  @media (max-width: 1242px) {
+    div > h1 {
+      font-size: 5rem;
+    }
+
+    div > .nickname {
+      font-size: 5.5rem;
+    }
+  }
 `;
 
 export const letterCountSpan = styled.span`
   color: #fff;
   font-family: 'GangwonEduSaeeum';
-  font-size: 28px;
+  font-size: 2.1rem;
   font-weight: 400;
-  width: 200px;
+  width: auto;
+
+  @media (max-width: 750px) {
+    font-size: 2.6rem;
+  }
+
+  @media (max-width: 1080px) {
+    font-size: 3.7rem;
+  }
+
+  @media (max-width: 1242px) {
+    font-size: 4.8rem;
+  }
 `;
 
 export const SocksWrap = styled.div`
@@ -73,6 +143,8 @@ export const SocksWrap = styled.div`
 `;
 
 export const IconWrap = styled.div`
+  width: 100%;
+  height: 100%;
   position: absolute;
 
   div {
@@ -82,12 +154,6 @@ export const IconWrap = styled.div`
     justify-content: center;
     position: absolute;
 
-    .shadow {
-      position: absolute;
-      top: 70%;
-      left: 5%;
-    }
-
     span {
       color: #fff;
       text-align: center;
@@ -96,6 +162,33 @@ export const IconWrap = styled.div`
       font-style: normal;
       font-weight: 400;
       line-height: 22px; /* 122.222% */
+    }
+
+    img {
+      width: 80% !important;
+      height: 5% !important;
+    }
+
+    @media (max-width: 750px) {
+      img {
+        width: 110px !important;
+        height: 110px !important;
+      }
+
+      span {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      img {
+        width: 160px !important;
+        height: 160px !important;
+      }
+
+      span {
+        font-size: 38px;
+      }
     }
   }
 `;
@@ -123,8 +216,17 @@ export const Button = styled.div<{ isOwner: boolean }>`
 
   cursor: pointer;
 
-  @media (max-width: 393px) {
+  @media (max-width: 750px) {
     width: 100%;
     height: 8%;
+
+    font-size: 28px;
+  }
+
+  @media (max-width: 1080px) {
+    width: 100%;
+    height: 8%;
+
+    font-size: 46px;
   }
 `;

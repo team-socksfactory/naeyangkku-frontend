@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const SigninWrap = styled.div`
   width: 100vw;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 10vh);
 
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@ export const SigninWrap = styled.div`
   gap: 35px;
 
   background: #fdedee;
-  padding-top: 100px;
+  padding-top: 10vh;
 `;
 
 export const TitleWrap = styled.div`
@@ -144,6 +144,17 @@ export const InputWrap = styled.div<{ menu: '회원가입' | '로그인' }>`
       }
       &:focus {
         outline: none;
+      }
+
+      &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px #fff inset;
+        -webkit-text-fill-color: #000;
+      }
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill:active {
+        transition: background-color 5000s ease-in-out 0s;
       }
     }
   }
