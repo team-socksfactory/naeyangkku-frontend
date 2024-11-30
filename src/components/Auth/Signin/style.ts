@@ -178,6 +178,7 @@ export const Button = styled.button`
 `;
 
 export const OAuthWrap = styled.div`
+  position: relative;
   width: calc(90% - 20px);
   height: 40%;
 
@@ -200,5 +201,9 @@ export const OAuthWrap = styled.div`
     font-family: 'GangwonEduPower';
     font-size: 18px;
     line-height: 22px; /* 110% */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 `;
