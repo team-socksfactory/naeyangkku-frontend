@@ -55,22 +55,13 @@ const Signin = () => {
           </div>
         </S.InputWrap>
       </S.SignWrap>
-      <div
-        style={{
-          width: '100%',
-          height: '20%',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '15px',
-          alignItems: 'center',
-        }}
-      >
+      <S.ButtonWrap>
         <S.Button onClick={menu === '회원가입' ? onRegister : onLogin}>벽난로 만들기</S.Button>
         <S.OAuthWrap>
           <img src={Google} alt="" />
           <span>구글 로그인</span>
         </S.OAuthWrap>
-      </div>
+      </S.ButtonWrap>
     </S.SigninWrap>
   );
 };

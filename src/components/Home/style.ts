@@ -29,8 +29,8 @@ export const MainWrap = styled.div<{ isOpen: boolean }>`
 
   @media (max-width: 1170px) {
     width: calc(100vw - 170px);
-    height: calc(100vh - 300px);
-    padding: 240px 20px 68px 150px;
+    height: calc(100vh - 100px);
+    padding: 40px 20px 68px 150px;
     background-image: url(${MobileBackgroundImage});
 
     p {
