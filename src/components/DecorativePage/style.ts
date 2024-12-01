@@ -1,14 +1,14 @@
-import styled from "styled-components";
-import { NaeYangKkuTheme } from "src/style/theme";
-import Ornament1Image from "src/assets/images/Ornament1.svg";
-import Ornament2Image from "src/assets/images/Ornament2.svg";
-import Ornament3Image from "src/assets/images/Ornament3.svg";
-import Ornament4Image from "src/assets/images/Ornament4.svg";
-import Ornament5Image from "src/assets/images/Ornament5.svg";
-import Ornament6Image from "src/assets/images/Ornament6.svg";
-import Ornament7Image from "src/assets/images/Ornament7.svg";
-import Ornament8Image from "src/assets/images/Ornament8.svg";
-import Ornament9Image from "src/assets/images/Ornament9.svg";
+import styled from 'styled-components';
+import { NaeYangKkuTheme } from 'src/style/theme';
+import Ornament1Image from 'src/assets/images/Ornament1.svg';
+import Ornament2Image from 'src/assets/images/Ornament2.svg';
+import Ornament3Image from 'src/assets/images/Ornament3.svg';
+import Ornament4Image from 'src/assets/images/Ornament4.svg';
+import Ornament5Image from 'src/assets/images/Ornament5.svg';
+import Ornament6Image from 'src/assets/images/Ornament6.svg';
+import Ornament7Image from 'src/assets/images/Ornament7.svg';
+import Ornament8Image from 'src/assets/images/Ornament8.svg';
+import Ornament9Image from 'src/assets/images/Ornament9.svg';
 
 export const MainWrap = styled.div`
   width: calc(100vw - 76px);
@@ -24,8 +24,9 @@ export const MainWrap = styled.div`
   justify-content: space-evenly;
   gap: 20px;
 
-  @media (max-width: 393px) {
-    background-size: contain;
+  @media (min-width: 1170px) {
+    height: calc(100vh - 230px);
+    padding: 100px 38px 130px 38px;
   }
 `;
 
@@ -37,13 +38,23 @@ export const TitleWrap = styled.div`
   align-items: flex-start;
 
   h1 {
-    font-family: "GangwonEdu Modu";
+    font-family: 'GangwonEdu Modu';
     color: #fff;
     font-size: 27px;
     height: fit-content;
     margin-block-start: 0;
     margin-block-end: 0;
     margin-top: 6vh;
+  }
+
+  @media (min-width: 1170px) {
+    height: 20vh;
+    margin-left: 7vw;
+    justify-content: flex-end;
+
+    h1 {
+      font-size: 50px;
+    }
   }
 `;
 
@@ -56,11 +67,19 @@ export const OrnamentWrap = styled.div`
 
   margin-top: 12px;
   margin-bottom: auto;
+
+  @media (min-width: 1170px) {
+    gap: 20px;
+  }
 `;
 
 export const OrnamentRow = styled.div`
   display: flex;
   gap: 16px;
+
+  @media (min-width: 1170px) {
+    gap: 20px;
+  }
 `;
 
 export const OrnamentContainer = styled.div<{ selected: boolean }>`
@@ -85,14 +104,15 @@ export const OrnamentContainer = styled.div<{ selected: boolean }>`
     box-shadow: inset 0 0 0 2px ${NaeYangKkuTheme.white};
   `}
 
-  @media (max-width: 393px) {
-    width: 11vh;
-    height: 13vh;
+  @media (min-width: 1170px) {
+    border-radius: 50px;
+
+    ${({ selected }) => selected && `box-shadow: inset 0 0 0 4px ${NaeYangKkuTheme.white};`}
   }
 `;
 
 export const Button = styled.div`
-  width: 30%;
+  width: 100%;
   height: 8%;
 
   border: none;
@@ -101,7 +121,7 @@ export const Button = styled.div`
   box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.24);
 
   color: #fff;
-  font-family: "GangwonEduPower";
+  font-family: 'GangwonEduPower';
   font-size: 18px;
 
   display: inline-flex;
@@ -112,9 +132,11 @@ export const Button = styled.div`
 
   margin-top: auto;
 
-  @media (max-width: 393px) {
-    width: 100%;
-    height: 8%;
+  @media (min-width: 1170px) {
+    width: 85%;
+    height: 6%;
+    font-size: 55px;
+    border-radius: 100px;
   }
 `;
 
