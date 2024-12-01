@@ -26,7 +26,7 @@ export const SigninWrap = styled.div`
     gap: 55px;
   }
 
-  @media (min-width: 1080px) {
+  @media (max-width: 1080px) {
     padding-top: 17vh;
     height: calc(100vh - 17vh);
     gap: 55px;
@@ -93,7 +93,7 @@ export const TitleWrap = styled.div`
     }
   }
 
-  @media (min-width: 1080px) {
+  @media (max-width: 1080px) {
     h1 {
       font-size: 78px;
     }
@@ -154,7 +154,7 @@ export const Menu = styled.div<{ isSelected: boolean }>`
     }
   }
 
-  @media (min-width: 1080px) {
+  @media (max-width: 1080px) {
     border-radius: ${({ isSelected }) => (isSelected ? '50px 50px 0px 0px' : '50px 50px 0px 12px')};
     span {
       font-size: 55px;
@@ -255,7 +255,7 @@ export const InputWrap = styled.div<{ menu: '회원가입' | '로그인' }>`
     }
   }
 
-  @media (min-width: 1080px) {
+  @media (max-width: 1080px) {
     div {
       gap: 20px;
 
@@ -368,7 +368,7 @@ export const OAuthWrap = styled.div`
     }
   }
 
-  @media (min-width: 1080px) {
+  @media (max-width: 1080px) {
     width: calc(90% - 100px);
     padding-left: 100px;
 

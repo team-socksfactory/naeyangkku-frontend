@@ -24,25 +24,21 @@ export const MainWrap = styled.div<{ isOpen: boolean }>`
     font-family: 'GangwonEdu Modu';
     font-size: 13px;
     font-weight: 400;
-    line-height: 22px; /* 169.231% */
+    line-height: 22px;
   }
 
-  @media (min-width: 1170px) {
-    width: calc(100vw - 170px);
-    height: calc(100vh - 100px);
-    padding: 40px 20px 68px 150px;
+  @media (max-width: 768px) {
+    width: 100vw;
+    height: auto; // 모바일에서 자동 높이 설정
+    padding: 20px; // 패딩 조정
     background-image: url(${MobileBackgroundImage});
 
     p {
-      position: absolute;
-      top: 94%;
-
-      font-size: 38px;
-      left: 17%;
+      font-size: 16px; // 모바일 텍스트 크기 조정
     }
   }
 
-  @media (min-width: 1080px) {
+  @media (min-width: 769px) and (max-width: 1080px) {
     width: calc(100vw - 140px);
     height: calc(100vh - 188px);
     padding: 140px 20px 48px 120px;
@@ -51,7 +47,38 @@ export const MainWrap = styled.div<{ isOpen: boolean }>`
     p {
       position: absolute;
       top: 94%;
+      font-size: 38px;
+      left: 17%;
+    }
+  }
 
+  @media (max-width: 1170px) {
+    width: calc(100vw - 170px);
+    height: calc(100vh - 100px);
+    padding: 40px 20px 68px 150px;
+    background-image: url(${MobileBackgroundImage});
+    background-position: center;
+    background-size: cover;
+    
+    p {
+      position: absolute;
+      top: 94%;
+      font-size: 38px;
+      left: 17%;
+    }
+  }
+
+  @media (min-width: 1171px) {
+    width: calc(100vw - 170px);
+    height: calc(100vh - 100px);
+    padding: 40px 20px 68px 150px;
+    background-image: url(${MobileBackgroundImage});
+    background-position: center;
+    background-size: cover;
+
+    p {
+      position: absolute;
+      top: 94%;
       font-size: 38px;
       left: 17%;
     }
@@ -77,17 +104,23 @@ export const TitleWrap = styled.div`
     font-family: 'GangwonEduSaeeum';
     font-size: 8vw;
     font-weight: 400;
-    height: fit-content;
-    margin-block-start: 0;
-    margin-block-end: 0;
+    margin: 0; // margin 설정
     line-height: 22px;
   }
 
-  @media (min-width: 1170px) {
+  @media (max-width: 768px) {
+    gap: 20px; // 모바일에서 간격 조정
+  }
+
+  @media (min-width: 769px) and (max-width: 1080px) {
     gap: 50px;
   }
 
-  @media (min-width: 1080px) {
+  @media (min-width: 1081px) and (max-width: 1170px) {
+    gap: 50px;
+  }
+
+  @media (min-width: 1171px) {
     h1 {
       font-size: 80px;
     }
@@ -99,14 +132,13 @@ export const letterCountSpan = styled.span`
   font-family: 'GangwonEduSaeeum';
   font-size: 7vw;
   font-weight: 400;
-  width: fit-content;
   letter-spacing: 10px;
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 
-  @media (min-width: 1080px) {
+  @media (min-width: 1171px) {
     font-size: 70px;
   }
 `;
@@ -116,14 +148,17 @@ export const SocksWrap = styled.div`
   height: 60%;
   position: relative;
 
-  @media (min-width: 1170px) {
+  @media (max-width: 768px) {
+    height: auto; // 모바일에서 자동 높이 설정
+  }
+
+  @media (min-width: 769px) and (max-width: 1170px) {
     width: 85%;
     height: 60%;
-
     bottom: 10%;
   }
 
-  @media (min-width: 1080px) {
+  @media (min-width: 1171px) {
     width: 85%;
     height: 60%;
   }
@@ -134,8 +169,11 @@ export const IconWrap = styled.div`
   height: fit-content;
   position: absolute;
 
-  @media (min-width: 1170px) {
-    width: 100%;
+  @media (max-width: 768px) {
+    height: auto; // 모바일에서 자동 높이 설정
+  }
+
+  @media (min-width: 769px) and (max-width: 1170px) {
     height: 400px;
   }
 
@@ -151,23 +189,11 @@ export const IconWrap = styled.div`
       text-align: center;
       font-family: 'GangwonEduSaeeum';
       font-size: 18px;
-      font-style: normal;
       font-weight: 400;
-      line-height: 22px; /* 122.222% */
+      line-height: 22px;
     }
 
-    @media (min-width: 1170px) {
-      img {
-        width: 150px !important;
-        height: 150px !important;
-      }
-
-      span {
-        font-size: 42px;
-      }
-    }
-
-    @media (min-width: 1080px) {
+    @media (min-width: 769px) and (max-width: 1170px) {
       img {
         width: 150px !important;
         height: 150px !important;
@@ -203,31 +229,29 @@ export const Button = styled.div<{ isOwner: boolean }>`
 
   cursor: pointer;
 
-  @media (min-width: 1170px) {
+  @media (max-width: 768px) {
+    width: 80%; // 모바일에서 넓이 조정
+    height: 6%;
+    font-size: 24px; // 모바일 폰트 크기 조정
+  }
+
+  @media (min-width: 769px) and (max-width: 1170px) {
     width: 80%;
     height: 6%;
-
     position: absolute;
     left: 50%;
     top: 93%;
     transform: translate(-50%, -93%);
-
     font-size: 48px;
   }
 
-  @media (min-width: 1179px) {
-    width: 90%;
-  }
-
-  @media (min-width: 1080px) {
+  @media (min-width: 1171px) {
     width: 80%;
     height: 6%;
-
     position: absolute;
     left: 50%;
     top: 93%;
     transform: translate(-50%, -93%);
-
     font-size: 48px;
   }
 `;

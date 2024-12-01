@@ -22,7 +22,7 @@ export const OnBoardingContainer = styled.div`
     overflow: scroll;
   }
 
-  @media (min-width: 1080px) {
+  @media (max-width: 1080px) {
     width: 100vw;
     height: 4700px;
     background-image: url(${OnBoarding});
@@ -51,7 +51,7 @@ export const ArrowButton = styled.img`
     top: 20%;
   }
 
-  @media (min-width: 1080px) {
+  @media (max-width: 1080px) {
     width: 200px;
     height: 150px;
     left: 73%;
@@ -79,7 +79,7 @@ export const Button = styled.img`
     padding-top: 180%;
   }
 
-  @media (min-width: 1080px) {
+  @media (max-width: 1080px) {
     top: 100%;
     left: 2%;
 
