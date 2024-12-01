@@ -5,6 +5,7 @@ import SantaImage from 'src/assets/img/write/santa.svg';
 import { usePostMyLetter } from 'src/query/Write/write.query';
 import { Write } from 'src/types/Write/write.type';
 import { writeStore } from 'src/stores/write/write.store';
+import ProgressGraph from 'src/components/ProgressGraph';
 
 const Modal: React.FC = () => {
   const location = useLocation();
@@ -50,10 +51,7 @@ const Modal: React.FC = () => {
 
   return (
     <S.MainWrap>
-      <S.ProgressBar>
-        <div className="Progress"></div>
-        <S.ProgressText>80%</S.ProgressText>
-      </S.ProgressBar>
+      <ProgressGraph progress={80} />
       <S.TitleWrap>
         <h1>메세지를 남겨주세요!</h1>
       </S.TitleWrap>
