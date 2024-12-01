@@ -27,6 +27,21 @@ export const MainWrap = styled.div<{ isOpen: boolean }>`
     line-height: 22px; /* 169.231% */
   }
 
+  @media (max-width: 1170px) {
+    width: calc(100vw - 170px);
+    height: calc(100vh - 300px);
+    padding: 240px 20px 68px 150px;
+    background-image: url(${MobileBackgroundImage});
+
+    p {
+      position: absolute;
+      top: 94%;
+
+      font-size: 38px;
+      left: 17%;
+    }
+  }
+
   @media (max-width: 393px) {
     background-image: url(${MobileBackgroundImage});
     background-size: contain;
@@ -49,7 +64,7 @@ export const TitleWrap = styled.div`
   h1 {
     color: #fff;
     font-family: 'GangwonEduSaeeum';
-    font-size: 32px;
+    font-size: 8vw;
     font-weight: 400;
     height: fit-content;
     margin-block-start: 0;
@@ -61,19 +76,33 @@ export const TitleWrap = styled.div`
 export const letterCountSpan = styled.span`
   color: #fff;
   font-family: 'GangwonEduSaeeum';
-  font-size: 28px;
+  font-size: 7vw;
   font-weight: 400;
-  width: 200px;
+  width: fit-content;
 `;
 
 export const SocksWrap = styled.div`
   width: 100%;
-  height: 80%;
+  height: 60%;
   position: relative;
+
+  @media (max-width: 1170px) {
+    width: 85%;
+    height: 60%;
+
+    bottom: 10%;
+  }
 `;
 
 export const IconWrap = styled.div`
+  width: 100%;
+  height: fit-content;
   position: absolute;
+
+  @media (max-width: 1170px) {
+    width: 100%;
+    height: 400px;
+  }
 
   div {
     display: flex;
@@ -81,12 +110,6 @@ export const IconWrap = styled.div`
     align-items: center;
     justify-content: center;
     position: absolute;
-
-    .shadow {
-      position: absolute;
-      top: 70%;
-      left: 5%;
-    }
 
     span {
       color: #fff;
@@ -96,6 +119,17 @@ export const IconWrap = styled.div`
       font-style: normal;
       font-weight: 400;
       line-height: 22px; /* 122.222% */
+    }
+
+    @media (max-width: 1170px) {
+      img {
+        width: 150px !important;
+        height: 150px !important;
+      }
+
+      span {
+        font-size: 42px;
+      }
     }
   }
 `;
@@ -122,6 +156,18 @@ export const Button = styled.div<{ isOwner: boolean }>`
   line-height: 22px;
 
   cursor: pointer;
+
+  @media (max-width: 1170px) {
+    width: 80%;
+    height: 6%;
+
+    position: absolute;
+    left: 50%;
+    top: 93%;
+    transform: translate(-50%, -93%);
+
+    font-size: 48px;
+  }
 
   @media (max-width: 393px) {
     width: 100%;

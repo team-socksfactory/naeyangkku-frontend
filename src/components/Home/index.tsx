@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as S from './style';
 import { NaeYangKkuTheme } from 'src/style/theme';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { EDIT_TREE_ITEM } from 'src/constants/home/home.constants';
-import { Shadow } from 'src/assets/images/socks';
 import { randomPosition } from 'src/utils/Home/randomPosition';
 import LetterDetail from './LetterDetail';
 import toast, { Toaster } from 'react-hot-toast';
@@ -17,7 +16,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const Home = () => {
   const navigate = useNavigate();
-
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [myLetterData, setMyLetterData] = useState<Letter[]>([]);
   const [sharedLetterData, setSharedLetterData] = useState<Letter[]>([]);
@@ -30,20 +29,22 @@ const Home = () => {
   const username = useLocation().pathname.split('/')[1];
 
   const getLetterByToken = async () => {
+    if (token.getToken(ACCESS_TOKEN_KEY) === undefined || myName !== decodeURI(username)) {
+      const { data: sharedLetter } = await homeRepositoryImpl.getSharedLetter(username);
+      setSharedLetterData(sharedLetter);
+    }
     if (token.getToken(ACCESS_TOKEN_KEY) !== undefined && myName === decodeURI(username)) {
       const { data: letter } = await homeRepositoryImpl.getLetter(+userId!);
       setMyLetterData(letter);
     }
-    if (myName !== decodeURI(username)) {
-      const { data: sharedLetter } = await homeRepositoryImpl.getSharedLetter(username);
-      setSharedLetterData(sharedLetter);
-    }
   };
 
   const getNicknameByOwner = async () => {
-    authRepositoryImpl.getUserIdByNickname(username).then((res) => {
-      setId(Number(res.data));
-    });
+    if (token.getToken(ACCESS_TOKEN_KEY) !== undefined) {
+      authRepositoryImpl.getUserIdByNickname(username).then((res) => {
+        setId(Number(res.data));
+      });
+    }
   };
   useEffect(() => {
     getNicknameByOwner();
@@ -51,7 +52,7 @@ const Home = () => {
 
   useEffect(() => {
     getLetterByToken();
-  }, [token.getToken(ACCESS_TOKEN_KEY)]);
+  }, []);
 
   const handleIsOpen = () => {
     setIsOpen((prev) => !prev);
@@ -62,7 +63,7 @@ const Home = () => {
       <S.MainWrap isOpen={isOpen}>
         <S.TitleWrap>
           <div style={{ display: 'inline-flex', gap: '3px' }}>
-            <h1 style={{ color: `${NaeYangKkuTheme.secondlyNormal}`, fontFamily: 'GangwonEdu Modu', fontSize: 27 }}>
+            <h1 style={{ color: `${NaeYangKkuTheme.secondlyNormal}`, fontFamily: 'GangwonEdu Modu' }}>
               {decodeURI(username)}
             </h1>
             <h1>님의 트리</h1>
@@ -77,11 +78,13 @@ const Home = () => {
               : `${sharedLetterData?.length}개의 양말이 도착했어요`}
           </S.letterCountSpan>
         </S.TitleWrap>
-        <S.SocksWrap>
+        <S.SocksWrap ref={containerRef}>
           <S.IconWrap>
             {myName === decodeURI(username)
               ? myLetterData?.map((letter) => {
-                  const { x, y } = randomPosition(319, 524);
+                  const containerWidth = containerRef.current?.clientWidth || 0;
+                  const containerHeight = containerRef.current?.clientHeight! - 100 || 0;
+                  const { x, y } = randomPosition(containerWidth, containerHeight);
                   const iconItem = EDIT_TREE_ITEM.find((item) => item.iconNm === letter.iconNm);
                   return (
                     <div
@@ -93,13 +96,14 @@ const Home = () => {
                       }}
                     >
                       <img src={iconItem?.src} alt="" />
-                      <img src={Shadow} alt="" className="shadow" />
                       <span>{letter.nickname}</span>
                     </div>
                   );
                 })
               : sharedLetterData?.map((letter) => {
-                  const { x, y } = randomPosition(319, 524);
+                  const containerWidth = containerRef.current?.clientWidth || 0;
+                  const containerHeight = containerRef.current?.clientHeight! - 150 || 0;
+                  const { x, y } = randomPosition(containerWidth, containerHeight);
                   const iconItem = EDIT_TREE_ITEM.find((item) => item.iconNm === letter.iconNm);
                   return (
                     <div
@@ -111,7 +115,6 @@ const Home = () => {
                       }}
                     >
                       <img src={iconItem?.src} alt="" />
-                      <img src={Shadow} alt="" className="shadow" />
                       <span>{letter.nickname}</span>
                     </div>
                   );
@@ -128,11 +131,7 @@ const Home = () => {
           </S.Button>
         )}
 
-        {!token.getToken(ACCESS_TOKEN_KEY) && (
-          <p style={{ position: 'absolute', top: '92%', left: '18%' }}>
-            편지 남기기 기능은 로그인한 사용자만 이용할 수 있어요
-          </p>
-        )}
+        {!token.getToken(ACCESS_TOKEN_KEY) && <p>편지 남기기 기능은 로그인한 사용자만 이용할 수 있어요</p>}
         <Toaster />
         {isOpen && <LetterDetail isOpen={isOpen} handleIsOpen={handleIsOpen} id={letterId} />}
       </S.MainWrap>
