@@ -11,11 +11,17 @@ export const MainWrap = styled.div`
   padding-top: 90px;
 
   @media (min-width: 1170px) {
-    padding-top: 150px;
     height: calc(100vh - 130px);
     width: calc(100vw - 240px);
 
     padding: 130px 90px 0px 150px;
+  }
+
+  @media (min-width: 1080px) {
+    height: calc(100vh - 280px);
+    width: calc(100vw - 240px);
+
+    padding: 150px 90px 130px 150px;
   }
 `;
 
@@ -41,6 +47,16 @@ export const TitleWrap = styled.div`
       font-size: 70px;
     }
   }
+
+  @media (min-width: 1080px) {
+    margin-top: 300px;
+    display: flex;
+    align-self: flex-start;
+    margin-bottom: 80px;
+    h1 {
+      font-size: 60px;
+    }
+  }
 `;
 
 export const BackWrap = styled.div`
@@ -60,6 +76,12 @@ export const BackWrap = styled.div`
     height: 1060px;
     border-radius: 40px;
   }
+
+  @media (min-width: 1080px) {
+    width: 900px;
+    height: 1030px;
+    border-radius: 40px;
+  }
 `;
 
 export const Frame = styled.div`
@@ -73,6 +95,13 @@ export const Frame = styled.div`
     border-radius: 40px;
     width: 930px;
     height: 1120px;
+  }
+
+  @media (min-width: 1080px) {
+    border-width: 6.5px;
+    border-radius: 40px;
+    width: 900px;
+    height: 1090px;
   }
 `;
 
@@ -89,6 +118,12 @@ export const IconImage = styled.img`
     width: 180px;
     height: 180px;
     top: -100px;
+  }
+
+  @media (min-width: 1080px) {
+    width: 150px;
+    height: 150px;
+    top: -80px;
   }
 `;
 
@@ -130,6 +165,16 @@ export const contentInput = styled.textarea`
       font-size: 60px;
     }
   }
+
+  @media (min-width: 1080px) {
+    font-size: 50px;
+    padding: 60px 0 0 0;
+    min-height: 700px;
+
+    &::placeholder {
+      font-size: 50px;
+    }
+  }
 `;
 
 export const NameWrap = styled.div`
@@ -149,6 +194,14 @@ export const NameWrap = styled.div`
   @media (min-width: 1170px) {
     margin-top: 50px;
     width: 940px;
+    height: 120px;
+    border-radius: 100px;
+    margin-bottom: 150px;
+  }
+
+  @media (min-width: 1080px) {
+    margin-top: 50px;
+    width: 900px;
     height: 120px;
     border-radius: 100px;
     margin-bottom: 150px;
@@ -190,6 +243,14 @@ export const NameInput = styled.textarea`
       font-size: 60px;
     }
   }
+
+  @media (min-width: 1080px) {
+    font-size: 50px;
+    height: 60px;
+    &::placeholder {
+      font-size: 50px;
+    }
+  }
 `;
 
 export const ShowWrap = styled.div`
@@ -212,6 +273,12 @@ export const ShowWrap = styled.div`
     height: 120px;
     border-radius: 100px;
   }
+
+  @media (min-width: 1080px) {
+    width: 900px;
+    height: 120px;
+    border-radius: 100px;
+  }
 `;
 
 export const ShowSpan = styled.span`
@@ -221,5 +288,9 @@ export const ShowSpan = styled.span`
 
   @media (min-width: 1170px) {
     font-size: 60px;
+  }
+
+  @media (min-width: 1080px) {
+    font-size: 50px;
   }
 `;

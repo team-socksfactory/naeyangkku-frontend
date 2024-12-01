@@ -56,6 +56,16 @@ export const TitleWrap = styled.div`
       font-size: 50px;
     }
   }
+
+  @media (min-width: 1080px) {
+    height: 20vh;
+    margin-left: 7vw;
+    justify-content: flex-end;
+
+    h1 {
+      font-size: 45px;
+    }
+  }
 `;
 
 export const OrnamentWrap = styled.div`
@@ -109,6 +119,11 @@ export const OrnamentContainer = styled.div<{ selected: boolean }>`
 
     ${({ selected }) => selected && `box-shadow: inset 0 0 0 4px ${NaeYangKkuTheme.white};`}
   }
+
+  @media (max-width: 393px) {
+    width: 12vh;
+    height: 13vh;
+  }
 `;
 
 export const Button = styled.div`
@@ -136,6 +151,13 @@ export const Button = styled.div`
     width: 85%;
     height: 6%;
     font-size: 55px;
+    border-radius: 100px;
+  }
+
+  @media (min-width: 1080px) {
+    width: 85%;
+    height: 6%;
+    font-size: 45px;
     border-radius: 100px;
   }
 `;

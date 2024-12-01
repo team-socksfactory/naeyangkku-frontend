@@ -27,7 +27,7 @@ export const MainWrap = styled.div<{ isOpen: boolean }>`
     line-height: 22px; /* 169.231% */
   }
 
-  @media (max-width: 1170px) {
+  @media (min-width: 1170px) {
     width: calc(100vw - 170px);
     height: calc(100vh - 100px);
     padding: 40px 20px 68px 150px;
@@ -42,16 +42,26 @@ export const MainWrap = styled.div<{ isOpen: boolean }>`
     }
   }
 
-  @media (max-width: 393px) {
+  @media (min-width: 1080px) {
+    width: calc(100vw - 140px);
+    height: calc(100vh - 188px);
+    padding: 140px 20px 48px 120px;
     background-image: url(${MobileBackgroundImage});
-    background-size: contain;
+
+    p {
+      position: absolute;
+      top: 94%;
+
+      font-size: 38px;
+      left: 17%;
+    }
   }
 
   ${({ isOpen }) =>
     isOpen &&
     css`
       background-color: rgba(0, 0, 0, 0.5);
-    `}
+    `};
 `;
 
 export const TitleWrap = styled.div`
@@ -76,6 +86,12 @@ export const TitleWrap = styled.div`
   @media (min-width: 1170px) {
     gap: 50px;
   }
+
+  @media (min-width: 1080px) {
+    h1 {
+      font-size: 80px;
+    }
+  }
 `;
 
 export const letterCountSpan = styled.span`
@@ -89,6 +105,10 @@ export const letterCountSpan = styled.span`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  @media (min-width: 1080px) {
+    font-size: 70px;
+  }
 `;
 
 export const SocksWrap = styled.div`
@@ -96,11 +116,16 @@ export const SocksWrap = styled.div`
   height: 60%;
   position: relative;
 
-  @media (max-width: 1170px) {
+  @media (min-width: 1170px) {
     width: 85%;
     height: 60%;
 
     bottom: 10%;
+  }
+
+  @media (min-width: 1080px) {
+    width: 85%;
+    height: 60%;
   }
 `;
 
@@ -109,7 +134,7 @@ export const IconWrap = styled.div`
   height: fit-content;
   position: absolute;
 
-  @media (max-width: 1170px) {
+  @media (min-width: 1170px) {
     width: 100%;
     height: 400px;
   }
@@ -131,7 +156,18 @@ export const IconWrap = styled.div`
       line-height: 22px; /* 122.222% */
     }
 
-    @media (max-width: 1170px) {
+    @media (min-width: 1170px) {
+      img {
+        width: 150px !important;
+        height: 150px !important;
+      }
+
+      span {
+        font-size: 42px;
+      }
+    }
+
+    @media (min-width: 1080px) {
       img {
         width: 150px !important;
         height: 150px !important;
@@ -167,7 +203,7 @@ export const Button = styled.div<{ isOwner: boolean }>`
 
   cursor: pointer;
 
-  @media (max-width: 1170px) {
+  @media (min-width: 1170px) {
     width: 80%;
     height: 6%;
 
@@ -179,8 +215,19 @@ export const Button = styled.div<{ isOwner: boolean }>`
     font-size: 48px;
   }
 
-  @media (max-width: 393px) {
-    width: 100%;
-    height: 8%;
+  @media (min-width: 1179px) {
+    width: 90%;
+  }
+
+  @media (min-width: 1080px) {
+    width: 80%;
+    height: 6%;
+
+    position: absolute;
+    left: 50%;
+    top: 93%;
+    transform: translate(-50%, -93%);
+
+    font-size: 48px;
   }
 `;

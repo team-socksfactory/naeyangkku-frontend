@@ -109,7 +109,7 @@ const Home = () => {
             <S.Button isOwner={myName === decodeURI(username)}>내 트리 링크 복사하기</S.Button>
           </CopyToClipboard>
         ) : (
-          <S.Button isOwner={myName === decodeURI(username)} onClick={() => navigate(`/decoratePage/${id}`)}>
+          <S.Button isOwner={myName === decodeURI(username)} onClick={() => navigate(`/decorativePage/${id}`)}>
             편지 남겨주기
           </S.Button>
         )}

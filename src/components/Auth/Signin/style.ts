@@ -19,6 +19,18 @@ export const SigninWrap = styled.div`
     height: calc(100vh - 15vh);
     gap: 70px;
   }
+
+  @media (min-width: 1242px) {
+    padding-top: 13vh;
+    height: calc(100vh - 13vh);
+    gap: 55px;
+  }
+
+  @media (min-width: 1080px) {
+    padding-top: 17vh;
+    height: calc(100vh - 17vh);
+    gap: 55px;
+  }
 `;
 
 export const TitleWrap = styled.div`
@@ -70,6 +82,34 @@ export const TitleWrap = styled.div`
       top: -24%;
     }
   }
+
+  @media (min-width: 1242px) {
+    img {
+      width: 70px !important;
+      height: 70px !important;
+      position: absolute;
+      left: 31%;
+      top: -24%;
+    }
+  }
+
+  @media (min-width: 1080px) {
+    h1 {
+      font-size: 78px;
+    }
+
+    span {
+      font-size: 58px;
+    }
+
+    img {
+      width: 80px !important;
+      height: 80px !important;
+      position: absolute;
+      left: 27%;
+      top: -27%;
+    }
+  }
 `;
 
 export const SignWrap = styled.div`
@@ -111,6 +151,13 @@ export const Menu = styled.div<{ isSelected: boolean }>`
     border-radius: ${({ isSelected }) => (isSelected ? '50px 50px 0px 0px' : '50px 50px 0px 12px')};
     span {
       font-size: 60px;
+    }
+  }
+
+  @media (min-width: 1080px) {
+    border-radius: ${({ isSelected }) => (isSelected ? '50px 50px 0px 0px' : '50px 50px 0px 12px')};
+    span {
+      font-size: 55px;
     }
   }
 `;
@@ -207,6 +254,31 @@ export const InputWrap = styled.div<{ menu: '회원가입' | '로그인' }>`
       }
     }
   }
+
+  @media (min-width: 1080px) {
+    div {
+      gap: 20px;
+
+      span {
+        font-size: 55px;
+      }
+
+      input {
+        width: calc(100% - 64px);
+        height: calc(50% - 20px);
+
+        padding: 10px 32px;
+        font-size: 55px;
+
+        border-width: 2px;
+        border-radius: 30px;
+
+        &::placeholder {
+          font-size: 55px;
+        }
+      }
+    }
+  }
 `;
 
 export const ButtonWrap = styled.div`
@@ -240,6 +312,12 @@ export const Button = styled.button`
   @media (min-width: 1170px) {
     border-radius: 55px;
     font-size: 50px;
+    box-shadow: 0px 4px 24px 0px rgba(255, 119, 119, 0.7);
+  }
+
+  @media (min-width: 1080px) {
+    border-radius: 55px;
+    font-size: 45px;
     box-shadow: 0px 4px 24px 0px rgba(255, 119, 119, 0.7);
   }
 `;
@@ -287,6 +365,24 @@ export const OAuthWrap = styled.div`
 
     span {
       font-size: 50px;
+    }
+  }
+
+  @media (min-width: 1080px) {
+    width: calc(90% - 100px);
+    padding-left: 100px;
+
+    border-radius: 55px;
+
+    box-shadow: 0px 4px 24px 0px rgba(255, 119, 119, 0.4);
+
+    img {
+      width: 110px !important;
+      height: 110px !important;
+    }
+
+    span {
+      font-size: 45px;
     }
   }
 `;

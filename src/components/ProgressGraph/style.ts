@@ -28,6 +28,12 @@ export const GraphWrap = styled.div`
       font-size: 52px;
     }
   }
+
+  @media (min-width: 1080px) {
+    span {
+      font-size: 42px;
+    }
+  }
 `;
 
 export const ProgressRate = styled.div`
@@ -40,6 +46,10 @@ export const ProgressRate = styled.div`
   @media (min-width: 1170px) {
     border-radius: 0 30px 30px 0;
   }
+
+  @media (min-width: 1080px) {
+    border-radius: 0 20px 20px 0;
+  }
 `;
 
 export const RateText = styled.div`
@@ -50,6 +60,11 @@ export const RateText = styled.div`
   height: min-content;
 
   @media (min-width: 1170px) {
+    top: 2vh;
+    right: 2vw;
+  }
+
+  @media (min-width: 1080px) {
     top: 2vh;
     right: 2vw;
   }
