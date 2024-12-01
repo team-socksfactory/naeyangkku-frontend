@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import * as S from './style';
 import SantaImage from 'src/assets/img/write/santa.svg';
+import ProgressGraph from '../ProgressGraph';
 
 const Write: React.FC = () => {
   const [message, setMessage] = useState('');
@@ -17,10 +18,7 @@ const Write: React.FC = () => {
 
   return (
     <S.MainWrap>
-      <S.ProgressBar>
-        <div className="Progress" style={{ width: `${progress}%` }}></div>
-        <S.ProgressText>{progress}%</S.ProgressText>
-      </S.ProgressBar>
+      <ProgressGraph progress={progress} />
       <S.TitleWrap>
         <h1>메세지를 남겨주세요!</h1>
       </S.TitleWrap>

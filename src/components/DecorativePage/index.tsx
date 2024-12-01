@@ -39,7 +39,7 @@ const DecorativePage = () => {
 
   return (
     <S.MainWrap>
-      <ProgressGraph />
+      <ProgressGraph progress={30}/>
       <S.TitleWrap>
         <div>
           <h1 style={{ color: `${NaeYangKkuTheme.white}` }}>장식을 선택해주세요</h1>

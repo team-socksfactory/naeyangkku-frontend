@@ -1,12 +1,16 @@
-import React, { useState } from "react";
-import * as S from "./style";
+import React, { useState } from 'react';
+import * as S from './style';
 
-const ProgressGraph = () => {
+interface ProgressGraphProps {
+  progress: number;
+}
+
+const ProgressGraph = ({ progress }: ProgressGraphProps) => {
   return (
     <S.GraphWrap>
-      <S.ProgressRate />
+      <S.ProgressRate style={{ width: `${progress}%` }} />
       <S.RateText>
-        <span>30%</span>
+        <span>{progress}%</span>
       </S.RateText>
     </S.GraphWrap>
   );
