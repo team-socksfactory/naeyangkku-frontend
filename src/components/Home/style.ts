@@ -57,6 +57,7 @@ export const MainWrap = styled.div<{ isOpen: boolean }>`
 export const TitleWrap = styled.div`
   display: flex;
   flex-direction: column;
+  height: auto;
 
   gap: 8px;
   align-items: flex-start;
@@ -71,6 +72,10 @@ export const TitleWrap = styled.div`
     margin-block-end: 0;
     line-height: 22px;
   }
+
+  @media (min-width: 1170px) {
+    gap: 50px;
+  }
 `;
 
 export const letterCountSpan = styled.span`
@@ -79,6 +84,11 @@ export const letterCountSpan = styled.span`
   font-size: 7vw;
   font-weight: 400;
   width: fit-content;
+  letter-spacing: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 export const SocksWrap = styled.div`

@@ -47,6 +47,7 @@ const Signin = () => {
           <div>
             <span>비밀번호</span>
             <input
+              type="password"
               placeholder="8자 이상"
               name="password"
               value={menu === '회원가입' ? signupInfo.password : loginInfo.password}

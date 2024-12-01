@@ -18,8 +18,7 @@ const Home = () => {
   const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [myLetterData, setMyLetterData] = useState<Letter[]>([]);
-  const [sharedLetterData, setSharedLetterData] = useState<Letter[]>([]);
+  const [letterData, setLetterData] = useState<Letter[]>([]);
   const [letterId, setLetterId] = useState<number>(0);
   const [id, setId] = useState<number>(0);
 
@@ -31,11 +30,11 @@ const Home = () => {
   const getLetterByToken = async () => {
     if (token.getToken(ACCESS_TOKEN_KEY) === undefined || myName !== decodeURI(username)) {
       const { data: sharedLetter } = await homeRepositoryImpl.getSharedLetter(username);
-      setSharedLetterData(sharedLetter);
+      setLetterData(sharedLetter);
     }
     if (token.getToken(ACCESS_TOKEN_KEY) !== undefined && myName === decodeURI(username)) {
       const { data: letter } = await homeRepositoryImpl.getLetter(+userId!);
-      setMyLetterData(letter);
+      setLetterData(letter);
     }
   };
 
@@ -58,6 +57,16 @@ const Home = () => {
     setIsOpen((prev) => !prev);
   };
 
+  const noHaveLetter = () => {
+    return (
+      <>
+        아직 받은 편지가 없어요..
+        <br />
+        <label style={{ fontSize: '7vw', letterSpacing: '0' }}> 편지를 부탁해 보세요!</label>
+      </>
+    );
+  };
+
   return (
     <>
       <S.MainWrap isOpen={isOpen}>
@@ -69,56 +78,30 @@ const Home = () => {
             <h1>님의 트리</h1>
           </div>
           <S.letterCountSpan>
-            {myName === decodeURI(username)
-              ? myLetterData?.length === 0
-                ? '아직 받은 편지가 없어요..\n편지를 부탁해 보세요!'
-                : `${myLetterData?.length}개의 양말이 도착했어요`
-              : sharedLetterData?.length === 0
-              ? '아직 받은 편지가 없어요..\n편지를 부탁해 보세요!'
-              : `${sharedLetterData?.length}개의 양말이 도착했어요`}
+            {letterData?.length === 0 ? noHaveLetter() : `${letterData?.length}개의 양말이 도착했어요`}
           </S.letterCountSpan>
         </S.TitleWrap>
         <S.SocksWrap ref={containerRef}>
           <S.IconWrap>
-            {myName === decodeURI(username)
-              ? myLetterData?.map((letter) => {
-                  const containerWidth = containerRef.current?.clientWidth || 0;
-                  const containerHeight = containerRef.current?.clientHeight! - 100 || 0;
-                  const { x, y } = randomPosition(containerWidth, containerHeight);
-                  const iconItem = EDIT_TREE_ITEM.find((item) => item.iconNm === letter.iconNm);
-                  return (
-                    <div
-                      key={letter.id}
-                      style={{ left: `${x}px`, top: `${y}px` }}
-                      onClick={() => {
-                        handleIsOpen();
-                        setLetterId(letter.id);
-                      }}
-                    >
-                      <img src={iconItem?.src} alt="" />
-                      <span>{letter.nickname}</span>
-                    </div>
-                  );
-                })
-              : sharedLetterData?.map((letter) => {
-                  const containerWidth = containerRef.current?.clientWidth || 0;
-                  const containerHeight = containerRef.current?.clientHeight! - 150 || 0;
-                  const { x, y } = randomPosition(containerWidth, containerHeight);
-                  const iconItem = EDIT_TREE_ITEM.find((item) => item.iconNm === letter.iconNm);
-                  return (
-                    <div
-                      key={letter.id}
-                      style={{ left: `${x}px`, top: `${y}px` }}
-                      onClick={() => {
-                        handleIsOpen();
-                        setLetterId(letter.id);
-                      }}
-                    >
-                      <img src={iconItem?.src} alt="" />
-                      <span>{letter.nickname}</span>
-                    </div>
-                  );
-                })}
+            {letterData?.map((letter) => {
+              const containerWidth = containerRef.current?.clientWidth || 0;
+              const containerHeight = containerRef.current?.clientHeight! - 100 || 0;
+              const { x, y } = randomPosition(containerWidth, containerHeight);
+              const iconItem = EDIT_TREE_ITEM.find((item) => item.iconNm === letter.iconNm);
+              return (
+                <div
+                  key={letter.id}
+                  style={{ left: `${x}px`, top: `${y}px` }}
+                  onClick={() => {
+                    handleIsOpen();
+                    setLetterId(letter.id);
+                  }}
+                >
+                  <img src={iconItem?.src} alt="" />
+                  <span>{letter.nickname}</span>
+                </div>
+              );
+            })}
           </S.IconWrap>
         </S.SocksWrap>
         {myName === decodeURI(username) ? (
@@ -131,7 +114,10 @@ const Home = () => {
           </S.Button>
         )}
 
-        {!token.getToken(ACCESS_TOKEN_KEY) && <p>편지 남기기 기능은 로그인한 사용자만 이용할 수 있어요</p>}
+        {!token.getToken(ACCESS_TOKEN_KEY) && myName !== decodeURI(username) && (
+          <p>편지 남기기 기능은 로그인한 사용자만 이용할 수 있어요</p>
+        )}
+
         <Toaster />
         {isOpen && <LetterDetail isOpen={isOpen} handleIsOpen={handleIsOpen} id={letterId} />}
       </S.MainWrap>

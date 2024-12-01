@@ -18,7 +18,7 @@ export const LetterWrap = styled.div`
 export const BackWrap = styled.div`
   background-color: #f7eee7;
   width: 300px;
-  height: 400px;
+  height: 330px;
   padding: 20px;
   border-radius: 28px;
   display: flex;
@@ -26,13 +26,26 @@ export const BackWrap = styled.div`
   align-items: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
+
+  @media (min-width: 1170px) {
+    width: 940px;
+    height: 1060px;
+    border-radius: 40px;
+  }
 `;
 
 export const Frame = styled.div`
   border: 1.6px dashed rgba(255, 119, 119, 0.8);
   border-radius: 20px;
-  width: 100%;
-  height: 100%;
+  width: 322px;
+  height: 375px;
+
+  @media (min-width: 1170px) {
+    border-width: 6.5px;
+    border-radius: 40px;
+    width: 930px;
+    height: 1120px;
+  }
 `;
 
 export const IconImage = styled.img`
@@ -43,6 +56,12 @@ export const IconImage = styled.img`
   top: -35px;
   left: 50%;
   transform: translateX(-50%);
+
+  @media (min-width: 1170px) {
+    width: 180px;
+    height: 180px;
+    top: -100px;
+  }
 `;
 
 export const InputWrap = styled.div`
@@ -66,18 +85,51 @@ export const contentInput = styled.textarea`
   overflow-y: auto;
 
   &::placeholder {
-    font-size: 20px;
+    font-size: 24px;
     color: #a9a9a9;
   }
 
   &:focus {
     outline: none;
   }
+
+  @media (min-width: 1170px) {
+    font-size: 60px;
+    padding: 80px 0 0 0;
+    min-height: 800px;
+
+    &::placeholder {
+      font-size: 60px;
+    }
+  }
+`;
+
+export const NameWrap = styled.div`
+  position: relative;
+  margin-top: 25px;
+  background-color: #f7eee7;
+  width: 300px;
+  height: 15px;
+  padding: 20px;
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  @media (min-width: 1170px) {
+    margin-top: 50px;
+    width: 940px;
+    height: 120px;
+    border-radius: 100px;
+    margin-bottom: 150px;
+  }
 `;
 
 export const NameInput = styled.textarea`
   width: 90%;
-  height: 24px;
+  height: 25px;
   text-align: center;
   border: none;
   background: transparent;
@@ -91,10 +143,23 @@ export const NameInput = styled.textarea`
   align-items: center;
   justify-content: center;
   padding: 0;
-  margin-left: 15px;
   margin-top: -10px;
+
+  &::placeholder {
+    margin-top: -10px;
+    font-size: 24px;
+    color: #a9a9a9;
+  }
 
   &:focus {
     outline: none;
+  }
+
+  @media (min-width: 1170px) {
+    font-size: 60px;
+    height: 80px;
+    &::placeholder {
+      font-size: 60px;
+    }
   }
 `;
