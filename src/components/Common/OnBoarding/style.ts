@@ -9,10 +9,18 @@ export const OnBoardingContainer = styled.div`
   background-image: url(${OnBoarding});
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 
   overflow: scroll;
 
-  position: relative;
+  @media (min-width: 1170px) {
+    width: 1200px;
+    height: 5000px;
+    background-image: url(${OnBoarding});
+    background-size: cover;
+
+    overflow: scroll;
+  }
 `;
 
 export const ArrowButton = styled.img`
@@ -26,6 +34,13 @@ export const ArrowButton = styled.img`
   z-index: 1;
 
   cursor: pointer;
+
+  @media (min-width: 1170px) {
+    width: 200px;
+    height: 150px;
+    left: 73%;
+    top: 20%;
+  }
 `;
 
 export const Button = styled.img`
@@ -36,4 +51,15 @@ export const Button = styled.img`
   z-index: 1;
 
   cursor: pointer;
+
+  @media (min-width: 1170px) {
+    top: 100%;
+    left: 2%;
+
+    width: 100%;
+
+    z-index: 1;
+
+    padding-top: 180%;
+  }
 `;
